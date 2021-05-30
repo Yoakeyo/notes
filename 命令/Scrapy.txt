@@ -1,0 +1,37 @@
+Scrapy
+	爬取网站数据，提取结构性数据的应用框架
+	采用 Twisted(扭曲的) 异步网络框架
+	
+	
+	流程
+		1.创建一个 Scrapy 项目
+			scrapy startproject 项目名
+		2.生成一个爬虫
+			scrapy genspider 爬虫名 "爬取域名"
+		
+		3.完善爬虫
+			完善spider，使用xpath等方法
+			完善pipeline
+		
+		4.运行爬虫
+			scrapy crawl 爬虫名
+	
+	settings
+		LOG_LEVEL = "WARNING"		#只显示warning以及warning以上的日志
+		LOG_FILE = "日志保存位置"	#将日志保存至本地
+		
+	pipeline
+		权重越小，优先级越高
+		process_ltem方法名不能修改为其他的名称
+		
+	log
+		import logging(内置日志管理模块)	#实例化logger方式在任何文件中使用logger输出内容
+		Logging.basicConfig(...)	#设置日志输出的样式，格式
+		实例化一个'logger=logging.getLogger(__name__)'	#能够显示log位置
+		在任何py文件中调用logger即可
+	
+	如何实现翻页请求
+		思路：
+			1.找到下一页的地址
+			2.构造一个关于下一页url地址的request请求传递给调度器
+		
