@@ -1,0 +1,107 @@
+def orm_test(request):
+    """
+    增加操作
+    """
+    # 新增一个名字为1901的一个班级,create是新增方法，里面可以接受多个字段参数
+    # Class.objects.create(name="1901")
+    # 同时新增一个学生和班级操作
+    # 新增一个班级名称为1903的班级，返回一个班级实例
+    # cls_instance = Class.objects.get(name="1903")
+    # stu_info左边的key要和Student模型字段对应上，因为cls是外键，所以要对应一个班级的实例
+    # stu_info = {
+    #     "name":"XIAOmei",
+    #     "age": "24",
+    #     "score":"88",
+    #     "email": "1333@qq.com",
+    #     "introduce": "假如你是xiaomei",
+    #     "cls": cls_instance
+    # }
+    # Student.objects.create(**stu_info)
+    """
+    修改操作
+    """
+    # 将名字为1901的班级名称改为1901_xiu，filter为过滤，支持多个参数，update是更新方法，支持多个参数
+    # Class.objects.filter(name="1901").update(name="1901_xiu")
+    """	
+    删除操作
+    """
+    # 将名字为1901_xiu的班级删除掉，delete是删除方法
+    # Class.objects.filter(name="1901_xiu").delete()
+    """
+    查询操作
+    """
+    # 查询单条,get返回实例，如果查询结果没有回报错，
+    # filter查询返回的结果是多个实例的列表,
+    # instance = Student.objects.get(pk=1)
+    #instance = Student.objects.filter(pk=1).first()
+
+    # 查询多条,返回queryset类型(多个查询结果实例的列表) 可以被迭代
+    # queryset = Student.objects.all() #
+    # for stu in queryset:
+                #学生的姓名 学生的年龄 学生的分数
+    #     print(stu.name,stu.age,stu.score)
+
+    #对查询集结果进行切片，取第0个到第4个，和列表的切片一样
+    # queryset = Student.objects.filter().all()[:5] # limit 语句
+    # print(queryset.query) # 返回执行的sql语句
+
+    # 精准查找 两条语句作用一样，查询姓名位小美的学生，结果返回查询集
+    # queryset = Student.objects.filter(name='小美')
+    # queryset = Student.objects.filter(name__exact='小美')
+
+    # 忽略大小写
+    # queryset = Student.objects.filter(name__iexact='xiaomei')
+
+    # 模糊查询
+    # queryset = Student.objects.filter(name__contains='xiao') # 不忽略大小写
+    # queryset = Student.objects.filter(name__icontains='xiao') # 忽略大小写
+
+    # 正则匹配法
+    # queryset = Student.objects.filter(name__regex='^x')
+    # queryset = Student.objects.filter(name__iregex='^x')
+
+    # 大于 小于
+    # queryset = Student.objects.filter(age__gt=17, age__lt=19)
+
+    # in 一个集合中的所有
+    # queryset = Student.objects.filter(age__in=(18,17,16))
+
+    # queryset = Student.objects.all().order_by('age') 升序
+    # queryset = Student.objects.all().order_by('-age') #升序
+    # queryset = Student.objects.all().order_by('-age','id') #升序
+    # for stu in queryset:
+    #     print stu.age,stu.id
+
+    # 指定字段查询
+    # 第一种
+    # queryset = Student.objects.values('name','age').all()
+
+    # 第二种
+    # queryset = Student.objects.values_list('name','age','score').all()
+
+    # 连表查询
+    # 第一种
+    # queryset = Student.objects.all()
+    # for stu in queryset:
+    #     print stu.name,stu.cls.id,stu.cls.name
+
+    # 第二种 : 牛逼的双下划线(跨表)，可以用多个双下划线跨多张表
+    # 语句功能是查询学生表中所有学生的姓名和学生所在班级的名称
+    # cls__name 是cls双下划线name,cls 是Student中的cls字段，name是班级表中的name字段
+    # queryset = Student.objects.values('name','cls__name').all()
+
+    # 查询一个班级所有学生，执行两次sql语句
+    # cls1 = Class.objects.get(name='1701')
+    # queryset = Student.objects.filter(cls=cls1)
+
+    # 查询一个班级所有学生，执行一次sql语句
+    # queryset = models.Student.objects.filter(cls__name='1903').all().values('name','cls__name')
+
+    # 查询一个班级所有学生，起始表从班级表开始查询,反向查询
+    # stu_cls 是学生表中外键的别名
+    # queryset = Class.objects.get(name='1903').stu_cls.all()
+
+    # 按照分数查询 大于90分
+    # queryset = Student.objects.filter(score__gt=90).all()
+
+    return HttpResponse('数据库操作成功')

@@ -1,0 +1,3 @@
+url 同意资源定位符
+	https://www.baidu.com/s?wd=django&rsv_spt=1&rsv_iqid=0xeb20484c0003e551&issp=1&f=8&rsv_bp=0&rsv_idx=2&ie=utf-8&rqlang=&tn=baiduhome_pg&ch=
+	协议://主机名.域名/路径?
