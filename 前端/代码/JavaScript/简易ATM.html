@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var money = 100;
+        do {
+            var options = prompt('请输入你想要的操作:\n1.存钱\n2.取钱\n3.显示余额\n4.退出');
+            switch (parseInt(options)) {
+                case 1:
+                    // 存钱功能
+                    var deposit = prompt('您要存多少钱?');
+                    money += parseInt(deposit)
+                    alert('存入成功')
+                    break
+                case 2:
+                    // 取钱功能
+                    var out = prompt('您要取多少钱');
+                    money -= out
+                    alert('取出成功')
+                    break
+                case 3:
+                    // 显示余额
+                    alert('您的余额为' + money);
+                    break
+                case 4:
+                    // 退出
+                    alert('退出成功')
+                    break
+            }
+        } while (parseInt(options) != 4);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

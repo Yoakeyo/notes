@@ -1,0 +1,61 @@
+CSS字体属性
+	用于定义字体系列、大小、粗细和文字样式
+	
+	字体系列
+		使用 font-family 属性定义
+		div{font-family:Arial,"Microsoft Yahei","微软雅黑";}
+		各个字体之间必须用英文逗号隔开
+		多个字体时优先使用第一个字体，若没有则使用下一个
+		一般情况下多个单词组成的字体加引号
+	字体大小
+		font-size
+		谷歌浏览器文字大小默认为16px
+		标题标签较为特殊，需单独指定文字大小
+	字体粗细
+		font-weight
+		font-weight:bold = font-weight:700;		#都是字体加粗效果
+		font-weight:normal = font-weight:400;	#标准粗细,可让粗体变细
+	文字样式
+		font-style
+		font-style:italic;	#让字体变斜体
+		font-style:normal;	#让斜体变正常
+	字体复合属性
+		语法:
+			font: font-style font-weight font-size/line-height font-family;
+		font: italic 700 16px "Microsoft Yahei";
+		必须按照语法顺序书写，不能更换顺序，各个属性以空格隔开
+		必须保留 font-size 和 font-family 属性，否则font属性将不起作用
+
+CSS文本属性
+	文本颜色
+		color	#用于定义文本颜色
+			类型					属性值
+			预定义颜色值		red,green,blue等
+			十六进制			#FF0000,#FFFFFF,#29D794等
+			RGB代码			rgb(255,0,0),rgb(100%,0%,0%)等
+	文本对齐
+		text-align:属性值
+			left	左对齐(默认值)
+			right	右对齐
+			center	居中对齐
+	装饰文本
+		text-decoration:属性值
+			none			默认。没有装饰
+			underline		下划线。链接 a 自带下划线
+			overline		上划线
+			line-through	删除线
+	文本缩进
+		text-indent:属性值	#用于指定文本第一行的缩进，通常是段落首行缩进
+			可以使用 px 或 em 等设置大小
+			可以使用 em 作为相对单位，即为当前元素 1 个文字的大小，若当前元素没有设置，则会按照父元素的大小
+	行间距
+		line-height
+			用于设置行间的距离(行高)
+			行间距由 上间距、 文本高度 和 下间距 三部分组成
+				上间距		5px}
+				文本高度		16px}	26px
+				下间距		5px}
+			上、下间距总是相同的
+			当行高等于盒子高度时，垂直居中
+			当行高大于盒子高度时，文字偏下
+			当行高小于盒子高度时，文字偏上

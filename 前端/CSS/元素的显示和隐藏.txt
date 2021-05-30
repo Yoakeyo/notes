@@ -1,0 +1,15 @@
+本质:让一个元素在页面中隐藏或者显示出来
+display 
+	display:none;		隐藏对象
+	display:block;		除了转换为块级元素以外，还有显示元素的意思
+	display 隐藏元素后，不再占有原来的位置
+visibility 可见性
+	visibility:visible;	元素可视
+	visibility:hidden;	元素隐藏
+overflow 溢出
+	当内容溢出一个元素的框时
+	visible		溢出部分显示出来(默认)
+	auto		在需要的时候添加滚动条
+	hidden		溢出部分隐藏
+	scroll		显示滚动条
+	如果是有定位的盒子，要慎用

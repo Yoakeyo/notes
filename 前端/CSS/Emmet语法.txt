@@ -1,0 +1,123 @@
+HTML初始结构
+	! => Tab 直接生成
+		<!DOCTYPE html>
+		<html lang="en">
+		<head>
+			<meta charset="UTF-8">
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<title>Document</title>
+		</head>
+		<body>
+			
+		</body>
+		</html>
+
+id(#),class(.)
+	div#test
+		<div id="test"></div>
+	div.test
+		<div class="test"></div>
+
+子节点(>),兄弟节点(+),上级节点(^)
+	div>ul>li>p
+		<div>
+			<ul>
+				<li>
+					<p></p>
+				</li>
+			</ul>
+		</div>
+	
+	div+ul+p
+		<div></div>
+		<ul></ul>
+		<p></p>
+		
+	div>ul>li^div	#因为^接在li后面，所以为li的上一级，与ul成为了兄弟关系
+		<div>
+			<ul>
+				<li>
+				</li>
+			</ul>
+			<div></div>
+		</div>
+
+重复(*)
+	div*5	# *后面添加的数字表示元素的重复个数
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+
+分组（()）
+	div>(ul>li>a)+div>p
+		<div>
+			<ul>
+				<li><a href=""></a></li>
+			</ul>
+			<div>
+				<p></p>
+			</div>
+		</div>
+		
+	div>ul>li>a+div>p	#如果不加()
+		<div>
+			<ul>
+				<li>
+					<a href=""></a>
+					<div>
+						<p></p>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+属性([attr])
+	属性指令: []
+		a[href="#" name="name"]
+	编号指令: $
+		ul>li.text$*3		#一个$代表一位数，后面跟上*数字就表示从1递增到*后填写的数字
+			<ul>
+				<li class="text1"></li>
+				<li class="text2"></li>
+				<li class="text3"></li>
+			<ul>
+		ul>li*3.test$@3 = ul>li.test$@3*3		#利用 $@+数字*数字 来自定义从几开始递增
+			<ul>
+				<li class="test3"></li>
+				<li class="test4"></li>
+				<li class="test5"></li>
+			</ul>
+
+文本({})
+	ul>li.test$*3{测试$}		# {}里面填写内容，可以和$一起使用
+		<ul>
+			<li class"test1">测试1</li>
+			<li class"test2">测试2</li>
+			<li class"test3">测试3</li>
+		</ul>
+		
+隐式标签(指令)	#部分标签可以不输入标签，直接输入指令，即识别父类标签
+	.test
+		<div class="test"></div>
+	ul>.test$*3
+		<ul>
+			<li class="text1"></li>
+			<li class="text2"></li>
+			<li class="text3"></li>
+		</ul>
+	select>.test$*5
+		<select name="" id="">
+			<option class="test1"></option>
+			<option class="test2"></option>
+			<option class="test3"></option>
+			<option class="test4"></option>
+			<option class="test5"></option>
+		</select>
+	常用的:
+		li:用于 ul 和 ol 中
+		tr:用于 table、tbody、thead 和 tfoot 中
+		td:用于 tr 中
+		option:用于 select 和 optgroup 中

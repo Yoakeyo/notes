@@ -1,0 +1,11 @@
+字体图标(iconfont)
+展示的是图标，本质属于字体
+
+下载网站
+	icomoon字库		http://icomoon.io	
+		内容种类繁多，全面
+		国外服务器，打开较慢
+	阿里iconfont		http://www.iconfont.cn/
+		可以使用AI制作图标上传生成
+		
+导入字体库后，使用字体图标

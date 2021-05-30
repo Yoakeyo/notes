@@ -1,0 +1,17 @@
+
+<table>		#表格标签
+    <tr>	#行标签
+		<th></th>	#表头
+        <td></td>	#单元格标签
+    </tr>
+</table>
+
+#表格属性
+属性名			属性值				概述
+align		left/center/right	表格对齐方式
+border		1/""				规定是否有边框，默认""没有
+cellpadding	像素值				规定单元边沿与内容之间的空白，默认1像素
+cellspacing	像素值				规定单元格之间的空白，默认2像素
+width		像素值/百分比		规定表格宽度
+colspan		列数					设定该列为几列，合并单元格
+rowspan		行数					设定该行为几行
