@@ -1,0 +1,2 @@
+导出数据库为sql文件
+	mysqldump -u用户名 -p 数据库名 > 数据库名.sql
