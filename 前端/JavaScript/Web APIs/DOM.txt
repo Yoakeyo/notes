@@ -1,0 +1,23 @@
+DOM(Document Object Model / 文档对象模型)
+	是 W3C 组织推荐的处理可扩展标记语言(HTML/XML)的标准编程接口
+	通过 DOM 接口可以改变网页的内容、结构和样式
+
+
+DOM 树
+	文档：一个页面就是一个文档，DOM 中使用 document 表示
+	元素：页面中的所有标签都是元素，DOM中使用 element 表示
+	节点：网页中的所有内容都是节点(标签、属性、文本、注释等), DOM 中使用 node 表示
+	DOM 把以上内容都看作是对象
+
+
+获取元素
+	根据 ID 获取元素
+		语法
+		document.getElementById(id)	//获取带有 ID 的元素对象
+			id 是大小写敏感的字符串
+			返回的是一个元素对象
+	根据标签名获取
+		document.getElementByTagName()	// 返回带有指定标签名的对象的集合
+		
+	根据 HTML5 新增的方法获取
+	特殊元素获取
