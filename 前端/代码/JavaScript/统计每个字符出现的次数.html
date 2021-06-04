@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var str = 'jhsadkhasjdkasdljwqjaa';
+        var chars = {};
+        for (i in str) {
+            index = str.charAt(i)
+            if (chars[index]) {
+                chars[index]++;
+            } else {
+                chars[index] = 1;
+            }
+        }
+        console.log(chars);
+        // 求字符出现次数最多的字符
+        var max = 0;
+        var ch = '';
+        for (var k in chars) {
+            if (chars[k] > max) {
+                max = chars[k];
+                ch = k;
+            }
+        }
+        console.log('出现次数最多的字符是：' + ch + ' 它出现了' + max + '次');
+    </script>
+</head>
+
+<body>
+    
+</body>
+
+</html>

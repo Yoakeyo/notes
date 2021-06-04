@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=[device-width], initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.soumeitu.com%2Fwp-content%2Fuploads%2F2020%2F07%2F5f16a9063ffd3.jpg&refer=http%3A%2F%2Fwww.soumeitu.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1625309894&t=9187287f405a10838981e2c78737a2e5') no-repeat center top;
+            background-size: cover;
+            min-height: 651px;
+            height: auto;
+            width: auto;
+        }
+
+        div {
+            text-align: center;
+        }
+
+        div img {
+            width: 80px;
+            height: 60px;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="skin">
+        <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.soumeitu.com%2Fwp-content%2Fuploads%2F2020%2F07%2F5f16a9063ffd3.jpg&refer=http%3A%2F%2Fwww.soumeitu.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1625309894&t=9187287f405a10838981e2c78737a2e5"
+            alt="">
+        <img src="http://bpic.588ku.com/back_pic/02/66/07/585789acf290673.jpg" alt="">
+        <img src="http://bpic.588ku.com/back_pic/00/11/90/475639df22db237.jpg" alt="">
+    </div>
+    <script>
+        var img = document.querySelector('.skin').querySelectorAll('img');
+        var body = document.querySelector('body');
+        for (var i = 0; i < img.length; i++) {
+            img[i].onclick = function () {
+                document.body.style.backgroundImage = 'url(' + this.src + ')'
+                // this.src 就是我们点击图片的路径
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

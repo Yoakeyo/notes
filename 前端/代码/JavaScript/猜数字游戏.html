@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // var random_num = Math.random(1,10);
+
+        function getRandom(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        var random_num = getRandom(1, 10);
+        // 方法1
+        // while (random_num != num) {
+        //     var num = parseInt(prompt('请输入一个1-10的数'));
+        //     if (num > random_num) {
+        //         alert('猜大了');
+        //     } else if (num < random_num) {
+        //         alert('猜小了');
+        //     }
+        // }
+        // alert('恭喜你猜对了');
+        // 方法2
+        var i = 3;
+        while (i >= 0) {
+            var num = parseInt(prompt('请输入一个1-10的数：'));
+            if (num > random_num) {
+                alert('猜大了');
+            } else if (num < random_num) {
+                alert('猜小了');
+            } else if (num == random_num) {
+                alert('恭喜你猜对了');
+                break;
+            }
+            i--;
+            alert('你还剩下' + i + '次机会');
+            if (i == 0) {
+                alert('你失败了');
+                break;
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

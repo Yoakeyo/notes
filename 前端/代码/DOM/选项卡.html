@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .tab {
+            padding: 20px 20px;
+        }
+
+        .tab_list ul {
+            display: flex;
+            border-bottom: 1px solid black;
+            width: 400px;
+        }
+
+        .tab_list ul li {
+            height: 30px;
+            text-align: center;
+            width: 100px;
+            font: 400 18px/30px '宋体';
+            background-color: lavender;
+            margin-left: 1px;
+            list-style: none;
+            cursor: pointer;
+
+        }
+
+        .tab_list ul li:hover {
+            background-color: rgb(247, 179, 52);
+            color: orangered;
+        }
+
+        .tab_list .current {
+            background-color: rgb(243, 66, 60);
+            border-bottom: 4px solid darkorange;
+            color: white;
+        }
+
+        .tab_con {
+            margin-top: 10px;
+            border: 2px solid black;
+            width: 400px;
+            height: 200px;
+        }
+
+        .tab_con div {
+            margin: 2px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab">
+        <div class="tab_list">
+            <ul>
+                <li class="current">商品介绍</li>
+                <li>规格和包装</li>
+                <li>商品评价</li>
+                <li>售后保障</li>
+            </ul>
+        </div>
+        <div class="tab_con">
+            <div class="item" style="display: block;">商品介绍内容</div>
+            <div class="item">规格和包装内容</div>
+            <div class="item">商品评价内容</div>
+            <div class="item">售后保障内容</div>
+        </div>
+    </div>
+    <script>
+        var tab_list = document.querySelector('.table_list');
+        var lis = document.querySelectorAll('li');
+        var item = document.querySelectorAll('.item');
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].setAttribute('index', i)
+            lis[i].onclick = function () {
+                // 选项模块
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].className = '';
+                }
+                this.className = 'current';
+                // 内容模块
+                var index = this.getAttribute('index')
+                // console.log(index);
+                for (var i = 0; i < item.length; i++) {
+                    item[i].setAttribute('style', 'display:none;')
+                }
+                item[index].setAttribute('style', 'display:block;')
+            }
+
+        }
+    </script>
+</body>
+
+</html>
