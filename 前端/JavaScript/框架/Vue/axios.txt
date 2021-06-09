@@ -1,0 +1,8 @@
+axios
+	功能强大的网络请求库
+	GET 方法
+		axios.get(地址?key=value&key2=values).then(function(response){},function(err){})
+			then 方法中的回调函数会在请求成功或触发时触发
+	POST 方法
+		axios.post(地址,{key:value,key2:value2}).then(function(response){},function(err){})
+	
