@@ -1,0 +1,314 @@
+jQuery 入口函数
+	$(function(){	// 更推荐
+		...	// 页面 DOM 加载完成的入口
+	});
+	$(document).ready(function(){
+		... // 页面 DOM 加载完成的入口
+	})
+	等 DOM 结构渲染完毕即可执行内部代码，不必等待外部资源全部加载完，jQuery已经完成了封装
+	相当于 DOMContentLoaded
+	不同于 load 事件
+		load 事件是等页面文档、外部js文件、css文件、图片加载完才执行
+
+$(jQuery)
+	$ 是 jQuery 的别称
+	实际开发中一般用 $ 符号
+	是 jQuery 的顶级对象
+		相当于原生 JavaScript中的 window
+
+
+jQuery 对象
+	用 jQuery 方式获取的对象就是 jQuery 对象
+	本质:
+		利用 $ 对 DOM 对象包装后产生的对象(伪数组的形式存储)
+	jQuery 对象和 DOM 对象
+		可以相互转换
+		原生 js 比 jQuery 更大
+		DOM 对象转换为 jQuery 对象:
+			$(DOM对象)
+		jQuery 对象转换为 DOM 对象:
+		$('div')[index]		// index 是索引号
+		$('div').get(index)	
+		
+
+jQuery 基础选择器
+	$("选择器")	// 写 CSS 选择器即可
+
+
+jQuery 筛选选择器
+	:first			获取第一个元素
+	:last			获取最后一个元素
+	:eq(index)		选择索引号为 index 的元素
+	:odd			选择索引号为 奇数 的元素
+	:even			选择索引号为 偶数 的元素
+
+
+jQuery 筛选方法(重点)
+	parent()				$("li").parent					查找父级
+	children(selector)		$("ul").children('li')			相当于$("ul>li"),最近一级
+	find(selector)			$("ul").find('li')				相当于$("ul li"),后代选择器
+	siblings(selector)		$(".first").siblings('li')		查找兄弟节点，不包括自身
+	nextAll([expr])			$(".first").nextAll()			查找当前元素之后的所有的同辈元素
+	prevtAll([expr])		$(".last").prevtAll()			查找当前元素之前的所有的同辈元素
+	hasClass(class)			$("div").hasClass('protected')	检查当前元素是否含有某个特殊的类，如果有则返回 true
+	eq(index)				$("li").eq(2)					相当于$("li:eq(2)")
+
+
+jQuery 隐式迭代(重要)
+	就是遍历内部 DOM 元素(伪数组形式存储)的过程
+	简单理解:给所有匹配到的元素循环遍历，执行相应的方法，不需要自己再去循环，方便调用
+
+
+jQuery 样式操作
+	操作 CSS
+		语法
+			$('div').css('属性','值')
+			如果只写属性名不写值，则返回属性值
+			参数可以是对象形式
+				$(this).css({"color":"white","font-size":"20px"})
+				$(this).css({
+				color:"white",
+				"font-size":"20px".
+				width:400,
+				height,400,
+				})
+	操作类样式方法
+		相当于 classList
+		添加类
+			$("div").addClass("类名");
+				相当于追加类名，不影响原类名
+		删除类
+			$("div").removeClass("类名");
+		切换类
+			如果有这个类,则删除.没有则添加
+			$("div").toggleClass("类名");
+		
+	
+链式编程
+	节省代码量
+	例:
+		// 普通编程
+		$("#right div").eq(index).show();
+		$("#right div").eq(index).siblings().hide();
+		// 链式编程
+		$("#right div").eq(index).show().siblings().hide();
+
+		
+jQuery 效果
+	显示隐藏
+		show([[speed],[easing],[fn]])
+			显示
+			speed
+				三种预定速度字符串之一
+					slow
+					normal	// 默认
+					fast
+				表示动画时长的毫秒数
+			easing
+				指定切换效果
+					swing	// 默认
+					linear	
+			fn
+				回调函数
+		hide([[speed],[easing],[fn]])
+			隐藏
+			参数与 show 相同
+		toggle([[speed],[easing],[fn]])
+			切换
+			
+	滑动
+		slideDown([[speed],[easing],[fn]])
+			下拉滑动
+		slideUp([[speed],[easing],[fn]])
+			上拉滑动
+		slideToggle([[speed],[easing],[fn]])
+			切换滑动
+	事件切换
+		hover([over,]out)
+			over:相当于 mouseenter
+			out:相当于 mouseleave
+	淡入淡出
+		fadeIn([[speed],[easing],[fn]])
+		fadeOut([[speed],[easing],[fn]])
+		fadeToggle([[speed],[easing],[fn]])
+		fadeTo([[speed],opacity,[easing],[fn]])
+			修改透明度
+			opacity
+				透明度
+				必须写，取值在 0-1 之间
+			speed
+				必须写
+	自定义动画
+		语法
+			animate(params,[speed],[easing],[fn])
+				params
+					想要修改的样式属性
+					以对象形式传递，必须写
+					
+	动画队列(效果队列)
+		动画或效果一旦触发就会执行，如果多次触发就会多次执行
+		停止排队
+			stop()
+				用于停止动画或效果
+				写到动画前，相当于结束上一次动画
+
+
+属性操作
+	获取属性
+		prop("属性")
+	修改属性
+		prop("属性","属性值")
+	自定义属性	// 也可以获得 H5 的自定义属性
+		获取
+			attr("属性") 	// 类似 getAttribute()
+		设置
+			attr("属性","属性值")	// 类似 setAttribute()
+	数据缓存
+		data()	// 数据存放在元素的缓存里
+			附加数据
+				data('name','value')	// 向被选元素附加数据
+			获取数据
+				data('name')	// 向被选元素获取数据
+					获取 H5 自定义属性时，不用写 data- ，而且返回的是数字型
+				
+jQuery 文本内容
+	普通元素内容
+		html('内容')	// 相当于 innerHTML
+			括号里有值是设置内容，空为获取
+	普通元素文本内容
+		text('内容')	// 相当于 innerTEXT
+	表单的值
+		val('内容')	// 相当于 value
+		
+
+jQuery 元素操作
+	遍历元素
+		语法:
+			$("div").each(function(index,domEle){ xxx; })
+				each() 方法遍历匹配没一个元素
+				主要用 DOM 处理
+				回调函数参数:
+					index 	// 索引号
+					domEle	// DOM对象,不是jQuery对象
+						想要使用 jQuery 方法，需要给这个 dom 元素转换为jQuery对象 $(domEle)
+		语法:
+			$.each(object,function(index,element) { xxx; })
+				可以遍历任意对象
+				主要用于遍历数据，处理数据
+	创建元素
+		语法:
+			$("<li></li>")
+	添加元素
+		内部添加:
+			生成父子关系
+			element.append("内容")	// 类似于 appendChild
+				放到内容最后面
+			element.prepend("内容")
+				放到内容最前面
+		外部添加
+			生成兄弟关系
+			element.after("内容")
+				放到目标元素后面
+			element.before("内容")
+				放到目标元素前面
+	删除元素
+		element.remove		// 删除匹配的元素(本身)
+		element.empty		// 删除匹配的元素集合中的所有子节点,不删除自身
+		element.html("")	// 清空匹配的元素内容
+
+
+jQuery 尺寸、位置操作
+	jQuery 尺寸
+		width() / height()						取得匹配元素宽度和高度,只包含 width / height
+		innerWidth() / innerHeight()			取得匹配元素宽度和高度,包含 padding
+		outerWidth() / outerHeight()			取得匹配元素宽度和高度,包含 padding,border
+		outerWidth(true) / outerHeight(true)	取得匹配元素宽度和高度,包含 padding,border,margin
+	jQuery 位置
+		主要由三个
+			offset()	// 获取/设置被选元素距离 文档 的偏移坐标
+				offset({rop:10,left:30})	// 设置
+				offset.left/top	// 获取左/上坐标
+			position()	// 带有父级定位
+				只能获取不能设置
+			scrollTop() / scrollLeft()		
+
+jQuery 事件
+	单个事件注册
+		$("div").事件(function(){
+			// 事件处理程序
+		})
+		与原生事件基本一致
+	事件处理
+		绑定事件
+			on()	
+				在匹配元素上绑定一个或多个事件的处理函数
+				语法:
+					element.on(events,[selector],fn)
+						evens:一个或多个用空格分隔的事件类型
+						selector:元素的子元素选择器
+						on 可以给未来动态创建的元素绑定事件
+						例如:
+							$("div").on({
+								click:function(){
+									$(this).css("background","skyblue");
+								mouseenter:function(){
+									$(this).css("background","blue");
+								mouseleave:function(){
+									$(this).css("background","red");
+								}
+							})
+							$("ul").on("mouseenter mouseleave","li",function(){
+								$(this).toggleClass("current");
+							})
+								click 绑定在 ul 身上，但是触发事件的是 li
+									称为事件委派/事件委托
+			one()
+				只能触发一次,触发完不需要解绑
+			trigger()
+				自动触发事件
+				语法:
+					元素.事件()
+					元素.trigger("type")		
+					element.triggerHandle(type)
+						不会触发元素的默认行为
+						例如触发 input 不会有光标闪烁
+				
+		解绑事件
+			off(['事件'],['事件委托'])	
+				若无参数，会解绑所有事件
+	事件对象
+		语法:
+			element.on(events,[selector],function(event){
+				阻止默认行为:event.preventDefault() 或者 return false
+				阻止冒泡:event.stopPropagation()
+				判断用户按下哪个键:keyCode()
+			})
+	对象拷贝
+		语法:
+			$.extend([deep],target,object 1,[object N])
+				deep:设置为 true 为深拷贝,默认 false 为浅拷贝
+					浅拷贝
+						是把被拷贝对象 复杂数据类型中的地址 拷贝给目标对象,修改目标对象会影响被拷贝对象
+					深拷贝
+						完全克隆(拷贝的对象，而非地址),修改目标对象不会影响被拷贝对象
+						会把数据完全复制一份给目标对象,若属性不冲突则会合并
+				target:要拷贝的对象	
+				object n:待拷贝到第 n 个对象的对象
+				会覆盖以前的同名数据
+	多库共存
+		jQuery 使用 $ 作为标识符，但其他 js库也有可能用 $ 作为标识符，一起使用时就会冲突
+		解决方案
+			1.使用 jQuery 替代 $
+			2.jQuery 变量规定新的名称:$.noConflict()
+				var xx = $.noConflict()	// 让 jQuery 释放对 $ 的控制权
+	
+	jQuery 插件常用网站
+		1.jQuery插件库:http://www.jq22.com/
+		2.jQuery之家http://www.htmleaf.com/
+		图片懒加载
+			当网页滑动到可视区域，再显示图片
+	本地存储
+		只能存储字符串格式的数据
+		把数组对象转换为字符串格式
+			JSON.stringify(数组)
+		

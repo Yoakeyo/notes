@@ -1,0 +1,24 @@
+获取元素
+$('div')	// jQuery
+document.querySelector('div')	// 原生JavaScript
+
+隐藏元素
+$('div').hide()
+myDiv.style.display = 'none'
+
+修改样式
+div.style.属性 = 值
+$('div').css('属性','值')
+
+鼠标经过显示元素
+$('div').mouseover(function(){
+	// $(this) jQuery 当前元素
+	$(this).children("ul").show()
+})	
+document.onmouseover() = function){
+}
+
+事件切换
+		hover([over,]out)
+			over:相当于 mouseenter
+			out:相当于 mouseleave
