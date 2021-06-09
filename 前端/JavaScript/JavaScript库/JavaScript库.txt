@@ -1,0 +1,13 @@
+JavaScript库
+	即 library，是一个 封装 好的特定的 集合(方法和函数)
+	如动画animate、hide、show等
+	都是对原生 JavaScript 的封装，内部都是用 JavaScript 实现的
+
+常见的 JavaScript 库
+	jQuery
+	Prototype
+	YUI
+	Dojo
+	Ext JS
+	移动端的 zepto
+
