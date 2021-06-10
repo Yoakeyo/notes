@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="origin-when-crossorigin">
+    <meta name="description" content="壹 ❀ 引 谈到flex布局，我不知道有多少人跟我一样，在本能的想到justify-content:center与align-items:center两条属性之后，除此之外的其它属性居然显得格外陌生。">
+    <meta property="og:description" content="壹 ❀ 引 谈到flex布局，我不知道有多少人跟我一样，在本能的想到justify-content:center与align-items:center两条属性之后，除此之外的其它属性居然显得格外陌生。">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>一篇文章弄懂flex布局 - 听风是风 - 博客园</title>
+    <link id="favicon" rel="shortcut icon" href="https://common.cnblogs.com/favicon.svg" type="image/svg+xml">
+    
+    <link rel="stylesheet" href="./一篇文章弄懂flex布局_files/blog-common.min.css">
+    <link id="MainCss" rel="stylesheet" href="./一篇文章弄懂flex布局_files/bundle-hover.min.css">
+    <link type="text/css" rel="stylesheet" href="./一篇文章弄懂flex布局_files/custom.css">
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./一篇文章弄懂flex布局_files/bundle-hover-mobile.min.css">
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/echolun/rss">
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/echolun/rsd.xml">
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/echolun/wlwmanifest.xml">
+    <script async="" src="./一篇文章弄懂flex布局_files/analytics.js.下载"></script><script src="./一篇文章弄懂flex布局_files/osd.js.下载"></script><script async="" src="./一篇文章弄懂flex布局_files/analytics.js(1).下载"></script><script>
+        var currentBlogId = 371661;
+        var currentBlogApp = 'echolun';
+        var cb_enable_mathjax = false;
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'Hover';
+        var visitorUserId = '';
+    </script>
+        <script>
+            var currentPostDateAdded = '2019-08-08 07:42';
+        </script>
+    <script src="./一篇文章弄懂flex布局_files/jquery-2.2.0.min.js.下载"></script>
+    <script src="./一篇文章弄懂flex布局_files/blog-common.min.js.下载"></script><style type="text/css">.medium-zoom-overlay{position:fixed;top:0;right:0;bottom:0;left:0;opacity:0;transition:opacity .3s;will-change:opacity}.medium-zoom--opened .medium-zoom-overlay{cursor:pointer;cursor:zoom-out;opacity:1}.medium-zoom-image{cursor:pointer;cursor:zoom-in;transition:transform .3s cubic-bezier(.2,0,.2,1)!important}.medium-zoom-image--hidden{visibility:hidden}.medium-zoom-image--opened{position:relative;cursor:pointer;cursor:zoom-out;will-change:transform}</style><style type="text/css">.medium-zoom-overlay{position:fixed;top:0;right:0;bottom:0;left:0;opacity:0;transition:opacity .3s;will-change:opacity}.medium-zoom--opened .medium-zoom-overlay{cursor:pointer;cursor:zoom-out;opacity:1}.medium-zoom-image{cursor:pointer;cursor:zoom-in;transition:transform .3s cubic-bezier(.2,0,.2,1)!important}.medium-zoom-image--hidden{visibility:hidden}.medium-zoom-image--opened{position:relative;cursor:pointer;cursor:zoom-out;will-change:transform}</style>
+    
+    
+    
+<meta http-equiv="origin-trial" content="A+b/H0b8RPXNaJgaNFpO0YOFuGK6myDQXlwnJB3SwzvNMfcndat4DZYMrP4ClJIzYWo3/yP2S+8FTZ/lpqbPAAEAAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="A9ZgbRtm4pU3oZiuNzOsKcC8ppFSZdcjP2qYcdQrFKVzkmiWH1kdYY1Mi9x7G8+PS8HV9Ha9Cz0gaMdKsiVZIgMAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AxL6oBxcpn5rQDPKSAs+d0oxNyJYq2/4esBUh3Yx5z8QfcLu+AU8iFCXYRcr/CEEfDnkxxLTsvXPJFQBxHfvkgMAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A9KPtG5kl3oLTk21xqynDPGQ5t18bSOpwt0w6kGa6dEWbuwjpffmdUpR3W+faZDubGT+KIk2do0BX2ca16x8qAcAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A3HucHUo1oW9s+9kIKz8mLkbcmdaj5lxt3eiIMp1Nh49dkkBlg1Fhg4Fd/r0vL69mRRA36YutI9P/lJUfL8csQoAAACFeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A0OysezhLoCRYomumeYlubLurZTCmsjTb087OvtCy95jNM65cfEsbajrJnhaGwiTxhz38ZZbm+UhUwQuXfVPTg0AAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="AxoOxdZQmIoA1WeAPDixRAeWDdgs7ZtVFfH2y19ziTgD1iaHE5ZGz2UdSjubkWvob9C5PrjUfkWi4ZSLgWk3Xg8AAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A7+rMYR5onPnACrz+niKSeFdH3xw1IyHo2AZSHmxrofRk9w4HcQPMYcpBUKu6OQ6zsdxf4m/vqa6tG6Na4OLpAQAAAB4eyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjI2MjIwNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AwfG8hAcHnPa/kJ1Co0EvG/K0F9l1s2JZGiDLt2mhC3QI5Fh4qmsmSwrWObZFbRC9ieDaSLU6lHRxhGUF/i9sgoAAACBeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiSW50ZXJlc3RDb2hvcnRBUEkiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AwQ7dCmHkvR6FuOFxAuNnktYSQrGbL4dF+eBkrwNLALc69Wr//PnO1yzns3pjUoCaYbKHtVcnng2hU+8OUm0PAYAAACHeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiSW50ZXJlc3RDb2hvcnRBUEkiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AysVDPGQTLD/Scn78x4mLwB1tMfje5jwUpAAzGRpWsr1NzoN7MTFhT3ClmImi2svDZA7V6nWGIV8YTPsSRTe0wYAAACHeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiSW50ZXJlc3RDb2hvcnRBUEkiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><script src="./一篇文章弄懂flex布局_files/pubads_impl_2021052601.js.下载" async=""></script><link rel="preload" href="./一篇文章弄懂flex布局_files/f.txt" as="script"><script type="text/javascript" src="./一篇文章弄懂flex布局_files/f.txt"></script><link rel="prefetch" href="https://1d437c1ce85423182c633cd458aba680.safeframe.googlesyndication.com/safeframe/1-0-38/html/container.html"></head>
+<body class="no-navbar">
+    
+    
+
+    
+    
+
+
+
+
+
+<div id="main">
+	<div id="post_detail">
+	<div class="post">
+		<h2>
+			
+<a id="cb_post_title_url" class="postTitle2 vertical-middle" href="https://www.cnblogs.com/echolun/p/11299460.html">
+    <span>一篇文章弄懂flex布局</span>
+    
+
+
+
+</a>
+
+		</h2>
+		<div id="cnblogs_post_body" class="blogpost-body blogpost-body-html">
+
+<p><span style="font-size: 14px">谈到flex布局，我不知道有多少人跟我一样，在本能的想到<span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">justify-content:center</span>与<span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">align-items:center</span>两条属性之后，除此之外的其它属性居然显得格外陌生。</span></p>
+
+
+<p><strong><span style="font-size: 14pt">&nbsp;贰 ❀ 关于flex布局</span></strong></p>
+<p><span style="font-size: 14px">我们知道当并列书写多个div标签，它们会纵向向下排位，如果我们想将多个div并列成一排，就得借助position，float，或display属性，这便是传统的盒模型做法。</span></p>
+<p><img src="./一篇文章弄懂flex布局_files/1213309-20190804194003826-1010252215.png" alt=""></p>
+<p><span style="font-size: 14px">而flex布局则是一种新的布局方案，通过为修改父div的<span style="background-color: rgba(255, 245, 245, 1); color: rgba(255, 80, 44, 1)">display属性</span>，让父元素成为一个<span style="background-color: rgba(255, 245, 245, 1); color: rgba(255, 80, 44, 1)">flex容器</span>，从而可以自由的操作容器中<span style="background-color: rgba(255, 245, 245, 1)">子元素(项目)</span>的排列方式。</span></p>
+<p><span style="font-size: 14px">例如我们让多个div横向排列，传统做法是使用浮动，但浮空后因为脱离文档流的缘故，父元素会失去高度，这又涉及了清除浮动等一系列的问题。</span></p>
+<p><span style="font-size: 14px">而flex布局相对简单很多，修改父元素<span style="color: rgba(255, 80, 44, 1)">d</span><span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">isplay:flex</span>，你会发现div自动就排列成了一行，而且没有浮动之后的副作用，从回流角度考虑，flex的性能更优于float；随着浏览器不断兼容以及旧版本的淘汰，flex布局注定会成为更为流行的布局方案。</span></p>
+<p><span style="font-size: 14px"><img src="./一篇文章弄懂flex布局_files/1213309-20190804195951602-110691576.png" alt=""></span></p>
+<p><span style="font-size: 14px">flex布局属性主要由<span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">容器属性</span>和<span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">项目属性</span>构成，下面我会分开讨论这两类属性。</span></p>
+<p><strong><span style="font-size: 14pt">&nbsp;贰 ❀ 容器属性</span></strong></p>
+<p><span style="font-size: 16px"><strong>1.flex-direction属性</strong></span></p>
+<p><span style="font-size: 14px">取值：<span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">row(默认)</span> | row-reverse | column | column-reverse</span></p>
+<p><span style="font-size: 14px">用于控制项目排列方向与顺序，<span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">默认row</span>，即横向排列，项目排列顺序为正序1-2-3；row-reverse同为横向排列，但项目顺序为倒序3-2-1。</span></p>
+<p><span style="font-size: 14px">column 与row相反，为<span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">纵向排列</span>，项目顺序为正序1-2-3，column-reverse同为纵向排列，项目顺序为倒序3-2-1。</span></p>
+<p><img src="./一篇文章弄懂flex布局_files/1213309-20190804214423463-1446742040.png" alt=""></p>
+<p><span style="font-size: 16px"><strong>2.flex-wrap属性</strong></span></p>
+<p><span style="font-size: 14px">取值：<span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">nowrap(默认)</span> | wrap | wrap-reverse</span></p>
+<p><span style="font-size: 14px">用于控制项目是否换行，<span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">nowrap表示不换行</span>；</span></p>
+<p><span style="font-size: 14px">举个例子：比如容器宽度为300px，容器中有6个宽度为60px的项目，nowrap情况下，项目会强行等分容器宽度从而不换行，那么项目实际宽度也就只有50px了，而非我们自己设置的60px。</span></p>
+<p><span style="font-size: 14px"><img src="./一篇文章弄懂flex布局_files/1213309-20190804233959273-2037077325.png" alt=""></span></p>
+<p><span style="font-size: 14px">wrap表示换行，即项目不会等分容器宽度，而是根据自身宽度进行排列，如果超出父容器宽度则自然换行。</span></p>
+<p><img src="./一篇文章弄懂flex布局_files/1213309-20190805235042046-1922114550.png" alt=""></p>
+<p><span style="font-size: 14px">wrap-reverse同样表示换行，需要注意的是<span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">第一排会紧贴容器底部，而不是我们想象的项目6紧贴容器顶部</span>，效果与wrap相反。</span></p>
+<p><img src="./一篇文章弄懂flex布局_files/1213309-20190806225229283-1107311503.png" alt=""></p>
+<p><span style="font-size: 16px"><strong>3.flex-flow属性</strong></span></p>
+<p><span style="font-size: 14px">flex-flow属性是flex-deriction与flex-wrap属性的简写集合，默认属性为<span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">row nowrap</span>，即横向排列，且不换行，如果需要控制项目排列与换行，推荐使用此属性，而非单独写两个。</span></p>
+<p><span style="font-size: 16px"><strong>4.justify-content属性</strong></span></p>
+<p><span style="font-size: 14px">取值：<span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">flex-start(默认)</span> | flex-end | center | space-between | space-around | space-evenly;</span></p>
+<p><span style="font-size: 14px">用于控制项目在横轴的对齐方式，默认flex-start即左对齐，center 为居中，对应的flex-end为右对齐。</span></p>
+<p><span style="font-size: 14px"><img src="./一篇文章弄懂flex布局_files/1213309-20190806225320396-1174389728.png" alt=""><img src="./一篇文章弄懂flex布局_files/1213309-20190806225406240-813624376.png" alt=""><img src="./一篇文章弄懂flex布局_files/1213309-20190805182039008-1198238203.png" alt=""></span></p>
+<p><span style="font-size: 14px">space-between为左右两端对齐，即<span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">左右两侧项目都紧贴容器</span>，且项目之间间距相等。</span></p>
+<p><span style="font-size: 14px"><img src="./一篇文章弄懂flex布局_files/1213309-20190805182705299-5638313.png" alt=""></span></p>
+<p><span style="font-size: 14px">space-around为<span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">项目之间间距为左右两侧项目到容器间距的2倍</span>，比较特别的布局，日常使用不太多。</span></p>
+<p><span style="font-size: 14px"><img src="./一篇文章弄懂flex布局_files/1213309-20190805183114377-29193290.png" alt=""></span></p>
+<p><span style="font-size: 14px">space-evenly为项目之间间距与项目与容器间距相等，相当于除去项目宽度，平均分配了剩余宽度作为项目左右margin。</span></p>
+<p><img src="./一篇文章弄懂flex布局_files/1213309-20190805183358497-472990119.png" alt=""></p>
+<p><span style="font-size: 16px"><strong>&nbsp;5.align-items属性</strong></span></p>
+<p><span style="font-size: 14px">取值：flex-start | flex-end | center | baseline | <span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">stretch(默认)</span></span></p>
+<p><span style="font-size: 14px">用于控制项目在纵轴排列方式，默认stretch即如果项目没设置高度，或高度为auto，则占满整个容器，下面第一张图的项目没设置高度，其余图片中均为60px。</span></p>
+<p><span style="font-size: 14px"><img src="./一篇文章弄懂flex布局_files/1213309-20190805232037403-422790942.png" alt=""></span></p>
+<p><span style="font-size: 14px">flex-start会让项目在纵轴紧贴容器顶部，flex-end与之相反：</span></p>
+<p><img src="./一篇文章弄懂flex布局_files/1213309-20190806225553341-1637862774.png" alt=""><img src="./一篇文章弄懂flex布局_files/1213309-20190805233424323-1333999765.png" alt=""></p>
+<p><span style="font-size: 14px">center使用最多，自然不会陌生，在纵轴中心位置排列：</span></p>
+<p><img src="./一篇文章弄懂flex布局_files/1213309-20190805233530662-1567383076.png" alt=""></p>
+<p><span style="font-size: 14px">baseline比较特殊，它让项目以第一行文字的基线为参照进行排列：</span></p>
+<p><img src="./一篇文章弄懂flex布局_files/1213309-20190805233734288-966468395.png" alt=""></p>
+<p><span style="font-size: 14px">注意，常理来说justify-content与align-items默认分别处理项目横轴，纵轴的对齐方式，但<span style="background-color: rgba(255, 245, 245, 1)">如果我们修改了<span style="color: rgba(255, 80, 44, 1)">flex-direction为column</span></span>，它们<span style="background-color: rgba(255, 245, 245, 1)">处理的轴向会交换</span>，也就是justify-content处理纵轴，align-items处理横轴。</span></p>
+<p><span style="font-size: 16px"><strong>6.align-content</strong></span></p>
+<p><span style="font-size: 14px">取值：flex-start | flex-end | center | space-between | space-around | space-evenly |&nbsp;<span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">stretch(默认)</span>;</span></p>
+<p><span style="font-size: 14px">用于控制多行项目的对齐方式，如果项目<span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">只有一行则不会起作用</span>；默认stretch，即在项目<span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">没设置高度</span>，或<span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">高度为auto</span>情况下让项目填满整个容器，与align-items类似。注意，如下演示的12个项目我均没有设置高度。</span></p>
+<p><span style="font-size: 14px"><img src="./一篇文章弄懂flex布局_files/1213309-20190806230418272-1997484074.png" alt=""></span></p>
+<p><span style="font-size: 14px">flex-start ，center，flex-end 与align-items属性表现一致：</span></p>
+<p><img src="./一篇文章弄懂flex布局_files/1213309-20190806230543025-1540085251.png" alt=""><img src="./一篇文章弄懂flex布局_files/1213309-20190806230610292-2072864141.png" alt=""><img src="./一篇文章弄懂flex布局_files/1213309-20190806230633147-1469679443.png" alt=""></p>
+<p><span style="font-size: 14px">space-around与justify-content保持一致，即项目之间间距为上下两端项目与容器间距两倍。</span></p>
+<p><img src="./一篇文章弄懂flex布局_files/1213309-20190806230909994-1088454199.png" alt=""></p>
+<p><span style="font-size: 14px">space-evenly同理，项目之间间距与项目到容器之间间距相等，space-between为上下两侧项目紧贴容器。</span></p>
+<p><img src="./一篇文章弄懂flex布局_files/1213309-20190806231015753-1441518528.png" alt=""><img src="./一篇文章弄懂flex布局_files/1213309-20190806231128539-9221266.png" alt=""></p>
+<p><span style="font-size: 14px">align-content其实也有baseline等其它可用值，表现与上面介绍过的属性一致，只是单行项目或多行项目的区别。</span></p>
+<p><strong><span style="font-size: 14pt">&nbsp;叁 ❀ 项目属性</span></strong></p>
+<p><span style="font-size: 14px">介绍完容器属性，简单介绍下项目属性。容器属性是加在容器上的，那么项目属性呢，就是写在项目上的，就好比容器属性给ul，项目属性给li差不多一个意思。</span></p>
+<p><span style="font-size: 16px"><strong>1.order</strong></span></p>
+<p><span style="font-size: 14px">取值：<span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">默认0</span>，用于决定项目排列顺序，数值越小，项目排列越靠前。</span></p>
+<p><img src="./一篇文章弄懂flex布局_files/1213309-20190808184738718-2028015504.png" alt=""></p>
+<p><span style="font-size: 16px"><strong>2.flex-grow</strong></span></p>
+<p><span style="font-size: 14px">取值：<span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">默认0</span>，用于决定项目在有剩余空间的情况下是否放大，<span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">默认不放大；</span>注意，即便设置了固定宽度，也会放大。</span></p>
+<p><span style="font-size: 14px">假设默认三个项目中前两个个项目都是0，最后一个是1，最后的项目会沾满剩余所有空间。</span></p>
+<p><img src="./一篇文章弄懂flex布局_files/1213309-20190808185733909-1052417826.png" alt=""></p>
+<p><span style="font-size: 14px">假设只有第一个项目默认为0，后面两个项目flex-grow均为1，那么后两个项目平分剩余空间。</span></p>
+<p><img src="./一篇文章弄懂flex布局_files/1213309-20190808185832446-278289995.png" alt=""></p>
+<p><span style="font-size: 14px">假设第一个项目默认为0，第二个项目为flex-grow:2，最后一个项目为1，则第二个项目在放大时所占空间是最后项目的两倍。</span></p>
+<p><img src="./一篇文章弄懂flex布局_files/1213309-20190808190032536-1526107911.png" alt=""></p>
+<p><span style="font-size: 16px"><strong>3.flex-shrink</strong></span></p>
+<p><span style="font-size: 14px">取值：<span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">默认1</span>，用于决定项目在空间不足时是否缩小，默认项目都是1，即<span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">空间不足时大家一起等比缩小；</span>注意，即便设置了固定宽度，也会缩小。</span></p>
+<p><span style="font-size: 14px">但如果某个项目flex-shrink设置为0，则即便空间不够，自身也不缩小。</span></p>
+<p><img src="./一篇文章弄懂flex布局_files/1213309-20190808191100715-1387948858.gif" alt=""></p>
+<p><span style="font-size: 14px">上图中第二个项目flex-shrink为0，所以自身不会缩小。</span></p>
+<p><span style="font-size: 16px"><strong>4.flex-basis</strong></span></p>
+<p><span style="font-size: 14px">取值：<span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">默认auto</span>，用于设置项目宽度，默认auto时，项目会保持默认宽度，或者以width为自身的宽度，但<span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">如果设置了flex-basis，权重会width属性高，因此会覆盖widtn属性。</span></span></p>
+<p><span style="font-size: 14px"><span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)"><img src="./一篇文章弄懂flex布局_files/1213309-20190808192004493-824002338.png" alt=""></span></span></p>
+<p><span style="font-size: 14px">上图中先设置了flex-basis属性，后设置了width属性，但宽度依旧以flex-basis属性为准。</span></p>
+<p><span style="font-size: 16px"><strong>5.flex</strong></span></p>
+<p><span style="font-size: 14px">取值：<span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">默认0 1 auto</span>，flex属性是flex-grow，flex-shrink与flex-basis三个属性的简写，用于定义项目放大，缩小与宽度。</span></p>
+<p><span style="font-size: 14px">该属性有两个快捷键值，分别是<span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">auto(1 1 auto)等分放大缩小，</span>与<span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">none(0 0 auto)不放大不缩小。</span></span></p>
+<p><span style="font-size: 16px"><strong>6.align-self</strong></span></p>
+<p><span style="font-size: 14px">取值：<span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">auto(默认)</span> | flex-start | flex-end | center | baseline | stretch，表示继承父容器的align-items属性。如果没父元素，则<span style="color: rgba(255, 80, 44, 1); background-color: rgba(255, 245, 245, 1)">默认stretch</span>。</span></p>
+<p><span style="font-size: 14px">用于让个别项目拥有与其它项目不同的对齐方式，各值的表现与父容器的align-items属性完全一致。</span></p>
+<p><span style="font-size: 14px"><img src="./一篇文章弄懂flex布局_files/1213309-20190808193900553-1175612273.png" alt=""></span></p>
+<p><span style="font-size: 14px">到这里，flex布局属性也就介绍完毕了，老实说，跟着完整写了一遍，发现之前很多理解都错误了，最骚的是部分属性单词我都拼错了，这篇博客就当flex笔记整理，若有缘人能看见，也希望能帮助到你。</span></p>
+</div>
+
+
+
+		
+	</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+    
+
+    
+
+
+</body></html>

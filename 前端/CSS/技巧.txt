@@ -1,0 +1,16 @@
+鼠标样式(cursor):
+	cursor:pointer;
+		default			默认(箭头)
+		pointer			小手
+		move			移动
+		text			文本
+		not-allowed		禁止
+
+取消表单轮廓
+	outline:none;	取消默认的蓝色边框
+
+防止拖拽文本域
+	resize:none;	防止文本框被拖动
+
+使相邻的边框合并，如表格边框等
+	border-collapse:collapse;

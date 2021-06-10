@@ -1,0 +1,17 @@
+盒子阴影(重点)
+	语法:
+		box-shadow: h-shadow v-shadow blur spread color inset;
+			h-shadow	#必需。水平阴影的位置。允许负值
+			v-shadow	#必需。垂直阴影的位置。允许负值
+			blur		#可选。模糊距离
+			spread		#可选。阴影尺寸
+			color		#可选。阴影颜色
+			inset		#可选。将外部阴影改为内部阴影
+
+文字阴影
+	语法:
+		text-shadow:h-shadow v-shadow blur color;
+			h-shadow	#必需。水平阴影的位置。允许负值
+			v-shadow	#必需。垂直阴影的位置。允许负值
+			blur		#可选。模糊距离
+			color		#可选。阴影颜色

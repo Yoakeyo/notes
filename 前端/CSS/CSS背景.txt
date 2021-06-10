@@ -1,0 +1,46 @@
+背景属性可以设置背景颜色、背景图片、背景平铺、背景图片位置、背景图像固定等等
+	背景颜色
+		语法:
+			background-color:颜色值;
+			默认值为 transparent(透明)
+		半透明(CSS3)
+			background:rgba(0,0,0,0.3);
+				最后一个是 alpha 透明度，取值范围在 0~1 之间，可以将 0.3 缩写为 .3
+				仅为背景色半透明
+	背景图片
+		语法:
+			background-image: none（默认无背景图） | url(url)
+				url(绝对或相对定位地址)
+				是url()而不是url
+		背景图片在背景颜色上方
+			
+	背景平铺
+		语法:
+			background-repeat: repeat | no-repeat | repeat-x | repeat-y
+				repeat		在纵向和横向上平铺
+				no-repeat	不平铺
+				repeat-x	在横向平铺
+				repeat-y	在纵向平铺
+				
+	背景图片位置
+		语法:
+			background-position: x y;
+				参数代表 x 坐标 和 y 坐标
+				可以使用 方位名词 或者 精确单位 
+					方位名词		position	top | center | bottom | left | right
+						如果两个值都是方位名词，则两个值顺序无关
+						如果只写了一个参数，另一个默认居中
+					精确单位		length		百分数 | 浮点数和单位标识符组成的长度值
+						第一个一定是 x 坐标 第二个一定是 y 坐标
+						如果只写了一个参数，另一个默认居中
+	
+	背景图像固定(背景附着)
+		设置背景图像是否固定或者随页面其余部分滚动
+		语法:
+			background-attachment: scroll(滚动) | fixed(固定)
+	
+	背景复合写法
+		语法(一般习惯顺序):
+			background:背景颜色 背景图片地址 背景平铺 背景图像滚动 背景图片位置;
+		实际顺序不影响
+		

@@ -1,0 +1,75 @@
+flex 布局
+	容器属性
+		flex-direction:
+			控制项目排序方向和顺序
+			row(默认)			横向排序
+			row-reverse			横向倒序
+			column				纵向排序
+			column-reverse		纵向倒序
+		flex-wrap:
+			控制项目是否换行
+			nowrap(默认)			不换行
+			wrap				换行
+			wrap-reverse		换行,但第一排会紧贴容器底部
+		flex-flow:
+			默认为 row nowrap
+			flex-direction 与 flex-wrap 的简写
+				即 横向排序,不换行
+		justify-content:
+			控制项目在横轴的对齐方式
+			flex-start(默认)		左对齐
+			flex-end			右对齐
+			center				居中对齐
+			space-between		左右两端对齐
+			space-around		项目之间的间距为左右两侧项目到容器间距的两倍
+			space-evenly		项目之间的间距与项目与容器间距相等
+		align-items:
+			控制项目在纵轴的排序方式
+			stretch(默认)		如果没设置高度或设置为 auto,则占满整个容器
+			flex-start			使项目纵轴紧贴容器顶部
+			flex-end			使项目纵轴紧贴容器底部
+			center				居中对齐
+			baseline			以项目第一行文字的基线作为参照排列
+			注意:
+				如果修改了 flex-direction 为 column,他们处理的轴向会交换
+					即变为 justify-content 处理纵轴.align-items 处理横轴
+		align-content:
+			控制多行项目的对齐方式	// 如果只有一行则不会起作用
+			stretch(默认)		与 align-items 类似
+			flex-start			
+			flex-end			
+			center				
+			space-between		
+			space-around 		
+			space-evenly 		
+	项目属性	
+		order
+			取值:默认0
+			决定项目排列顺序,数值越小,项目排列越靠前
+		flex-grow
+			取值:默认0	// 默认不放大 
+			用于决定项目在有剩余空间的情况下是否放大	// 即使设定了固定宽度,也会放大
+		flex-shrink
+			取值:默认1	// 即空间不足时全部等比缩小
+			用于决定项目在空间不足时是否缩小	// 即使设定了固定宽度,也会缩小
+		flex-basis
+			取值:默认 auto	// 保持默认宽度
+			用于设置项目宽度
+			但权重比width属性高，因此会覆盖widtn属性。
+		flex
+			取值: 默认 0 1 auto	
+			是 flex-grow, flex-shrink 与 flex-basis 的缩写
+			定义项目放大,缩小与宽度
+			快捷键值:
+				auto(1 1 auto)	// 等分放大缩小
+				none(0 0 auto)	// 不放大不缩小
+		align-self
+			用于让个别项目拥有与其他项目不同的对齐方式
+			各值效果 align-items 完全一致
+			auto(默认)			
+			flex-start			
+			flex-end			
+			center				
+			baseline 			
+			stretch				// 如果没有父元素,则默认为 stretch
+			
