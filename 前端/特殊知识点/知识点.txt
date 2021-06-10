@@ -1,7 +1,0 @@
-播放视频时，chrome浏览器的兼容问题
-	<video src="myVideo.mp4" muted></video>	// 导入视频
-	var myVideo = document.querySelector('video');	// 获取视频元素
-	myVideo.play()	// 播放视频,Chrome无法直接播放 需要添加 muted
-		muted 属性
-			是一个 boolean(布尔)属性
-			用于设置或返回的视频/音频是否应该被禁音
