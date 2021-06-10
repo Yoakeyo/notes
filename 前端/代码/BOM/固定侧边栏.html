@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .header {
+            width: 800px;
+            height: 200px;
+            background-color: cornflowerblue;
+            margin-left: 50px;
+            margin-top: 20px;
+        }
+
+        .banner {
+            width: 800px;
+            height: 300px;
+            background-color: darkblue;
+            margin-left: 50px;
+            margin-top: 20px;
+        }
+
+        .main {
+            width: 800px;
+            height: 800px;
+            background-color: crimson;
+            margin-left: 50px;
+            margin-top: 20px;
+        }
+
+        .slider-bar {
+            position: absolute;
+            margin-left: 860px;
+            top: 240px;
+            width: 40px;
+            height: 100px;
+            background-color: darkcyan;
+        }
+
+        .goBack {
+            display: none;
+            color: white;
+            font: 400 22px '宋体';
+            text-align: center;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider-bar">
+        <span class="goBack">返回顶部</span>
+    </div>
+    <div class="header">头部区域</div>
+    <div class="banner">banner 区域</div>
+    <div class="main">主体部分</div>
+    <script>
+        var slider = document.querySelector('.slider-bar');
+        var banner = document.querySelector('.banner');
+        var main = document.querySelector('.main');
+        var goBack = document.querySelector('.goBack');
+        // banner.offsetTop 是banner距离顶部的值
+        // sliderTop 是当侧边栏固定定位以后应该变化的数值
+        var sliderTop = slider.offsetTop - banner.offsetTop;
+        document.addEventListener('scroll', function () {
+            // 当 滚动了 banner.offsetTop 相同的距离时
+            if (window.pageYOffset >= banner.offsetTop) {
+                slider.style.position = 'fixed';
+                slider.style.top = sliderTop + 'px';
+            } else {
+                slider.style.position = 'absolute';
+                slider.style.top = banner.offsetTop + 'px';
+            }
+            if (window.pageYOffset >= main.offsetTop) {
+                goBack.style.display = 'block'
+            } else {
+                goBack.style.display = 'none'
+            }
+            console.log(window.pageYOffset);
+        })
+        goBack.addEventListener('click', function () {
+            window.scroll(0, 0);
+        })
+    </script>
+</body>
+
+</html>

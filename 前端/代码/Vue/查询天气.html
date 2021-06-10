@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            height: 0;
+        }
+
+        h1 {
+            font: 700 46px '黑体';
+            text-shadow: 4px 4px 4px rgba(0, 0, 0, .3);
+            height: 50px;
+            flex-wrap: nowrap;
+            justify-content: center;
+            flex-grow: 1;
+
+        }
+
+        input {
+            width: 200px;
+            height: 30px;
+            outline: none;
+        }
+
+        div {
+            display: flex;
+            height: auto;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        button {
+            width: 50px;
+            height: 34px;
+            margin-left: -5px;
+        }
+
+        .search {
+            flex-direction: row;
+            flex-grow: 0;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .weather {
+            align-items: stretch;
+            flex-direction: row;
+            flex-grow: 0;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
+
+        span {
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            margin-left: 10px;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <div class="title">
+            <h1>鬼知道</h1>
+
+        </div>
+        <div class="search">
+            <input type="text" v-model="city" name="" id="" @keyup.enter="search">
+            <button @click="search">搜索</button>
+        </div>
+        <div class="weather">
+            <span v-for="item in weather">
+                <h2>{{ item.type }}</h2>
+                <h4>{{ item.high }} {{ item.low }}</h4>
+                <p>{{ item.date }}</p>
+                <p>{{ item.fengxiang }}</p>
+            </span>
+        </div>
+    </div>
+
+    <script src="./vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                city: "",
+                weather: []
+            },
+            methods: {
+                search: function () {
+                    console.log('天气查询');
+                    var that = this;
+                    axios.get("http://wthrcdn.etouch.cn/weather_mini?city=" + this.city)
+                        .then(function (response) {
+                            console.log(response.data.data.forecast);
+                            that.weather = response.data.data.forecast
+                        })
+                        .catch(function (err) { })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

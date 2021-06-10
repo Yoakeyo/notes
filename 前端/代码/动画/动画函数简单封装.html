@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        var div = document.querySelector('div');
+        function animate(obj, target) {
+            // 清除以前的定时器，防止多个定时器同时生成
+            clearInterval(obj.timer)
+            obj.timer = setInterval(function () {
+                if (obj.offsetLeft >= target) {
+                    // 停止动画 即为停止定时器
+                    clearInterval(obj.timer);
+                } else {
+                    obj.style.left = obj.offsetLeft + 3 + 'px';
+                }
+            }, 30)
+        }
+        // 调用函数
+        animate(div, 40);
+    </script>
+</body>
+
+</html>

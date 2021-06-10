@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        comp = new Comp();
+        do {
+            select = parseInt(prompt('欢迎使用简易计算器：\n1.加法运算;\n2.减法运算;\n3.乘法运算;\n4.除法运算;\n5.退出;\n请输入您的选项:'));
+            if (select != 5) {
+                num1 = parseInt(prompt('请输入第一个数：'));
+                num2 = parseInt(prompt('请输入第二个数：'));
+            }
+            switch (select) {
+                case 1:
+                    comp.add(num1, num2);
+                    break
+                case 2:
+                    comp.sub(num1, num2);
+                    break
+                case 3:
+                    comp.mul(num1, num2);
+                    break
+                case 4:
+                    comp.div(num1, num2);
+                    break
+                case 5:
+                    alert('退出成功');
+                    break
+            }
+        } while (parseInt(select) != 5);
+        function Comp() {
+            this.add = function (num1, num2) {
+                Add = num1 + num2;
+                alert(Add)
+            }
+            this.sub = function (num1, num2) {
+                Sub = num1 - num2;
+                alert(Sub)
+            }
+            this.mul = function (num1, num2) {
+                Mul = num1 * num2;
+                alert(Mul)
+            }
+            this.div = function (num1, num2) {
+                Div = num1 / num2;
+                alert(Div)
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

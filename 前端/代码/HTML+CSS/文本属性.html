@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文本属性</title>
+    <style>
+        .font1 {
+            text-decoration: none;
+        }
+        .font2 {
+            text-decoration: underline;
+            text-align: left;
+        }
+        .font3 {
+            text-decoration: overline;
+            text-align: right;
+        }
+        .font4 {
+            text-decoration: line-through;
+            text-align: center;
+            
+        }
+        .font5 {
+            font-style: italic;
+            color: red;
+            /* 2em相当于当前元素2个文字的大小 */
+            text-indent: 2em;
+        }
+        .font6 {
+            font-weight: 700;
+            /* font-weight: bold; 也可以，但最好用数字形式*/
+            color: rgb(0, 255, 0);
+            line-height: 26px;
+        }
+    </style>
+</head>
+<body>
+    <p>这是默认</p>
+    <p class="font2">这是下划线 左对齐</p>
+    <p class="font3">这是上划线 右对齐</p>
+    <p class="font4">这是删除线 居中对齐</p>
+    <p class="font5">这是斜体 红色 首行缩进</p>
+    <p class="font6">这是粗体 RGB绿色 行间距26px</p>
+    <a href="#" class="font1">这里是取消链接的下划线</a>
+</body>
+</html>

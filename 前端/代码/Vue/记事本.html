@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            height: 0;
+        }
+
+        h1 {
+            display: block;
+            text-align: center;
+            font-size: 60px;
+            width: auto;
+            height: auto;
+        }
+
+        input {
+            width: 400px;
+            height: 80px;
+            font: 400 40px '微软雅黑';
+            text-align: center;
+        }
+
+        .comment span,
+        label {
+            display: block;
+        }
+
+        section {
+            height: auto;
+        }
+
+        li {
+            height: 30px;
+            display: block;
+        }
+
+        label {
+            margin-left: 40px;
+        }
+    </style>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        <h1>记事本</h1><br>
+        <input @keyup.enter="add" type="text" v-model="inputValue" placeholder="请输入内容">
+        <section>
+            <ul>
+                <li v-for="(item,index) in list">
+                    <div class="comment">
+                        <span>{{ index+1 }}</span>
+                        <label>{{ item }}</label>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#box",
+            data: {
+                list: ["吃饭", "睡觉"],
+                inputValue: "的的",
+            },
+            methods: {
+                add: function () {
+                    this.list.push(this.inputValue)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

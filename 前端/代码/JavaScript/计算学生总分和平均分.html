@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算学生总分和平均分</title>
+    <script>
+        var sum = 0;
+        var score;
+        var num = prompt('输入想要计算的学生数：');
+        for (var i = 1; i <= num; i++) {
+            score = prompt('请输入第' + i + '个学生的成绩');
+            sum = sum + parseInt(score);
+            average = sum / num;
+        }
+        alert('总分为' + sum);
+        alert('平均分为' + average)
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

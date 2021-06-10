@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        div {
+            position: relative;
+            width: 520px;
+            height: 280px;
+            background-color: purple;
+            /* 隐藏溢出的部分 */
+            overflow: hidden;
+            margin: 100px 100px;
+        }
+
+        .left,
+        .right {
+            position: absolute;
+            float: left;
+            top: 40%;
+            width: 24px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, .3);
+            text-align: center;
+            line-height: 40px;
+            color: #fff;
+            font-family: 'icomoon';
+            font-size: 18px;
+            text-decoration: none;
+
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img :src="imgSrc[index]" alt="">
+        <a href="javascript:;" class="left" @click="prev">←</a>
+        <a href="javascript:;" class="right" @click="next">→</a>
+
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "div",
+            data: {
+                imgSrc: [
+                    "https://aecpm.alicdn.com/simba/img/TB1JNHwKFXXXXafXVXXSutbFXXX.jpg",
+                    "https://aecpm.alicdn.com/simba/img/TB183NQapLM8KJjSZFBSutJHVXa.jpg",
+                    "https://img.alicdn.com/imgextra/i4/6000000008137/O1CN01ynT21w29ynT4wLszg_!!6000000008137-2-octopus.png",
+                ],
+                index: 0
+            },
+            methods: {
+                prev: function () {
+                    if (this.index > 0) {
+                        this.index--;
+                    }
+
+                },
+                next: function () {
+                    if (this.index < this.imgSrc.length - 1)
+                        this.index++;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

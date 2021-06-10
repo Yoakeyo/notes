@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./animate.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            margin-top: 30px;
+            margin-left: 40px;
+        }
+
+        ul li {
+            list-style: none;
+        }
+
+        ul li a {
+            width: 80px;
+            height: 40px;
+            background-color: royalblue;
+            text-align: center;
+            /* display: inline-block; */
+            float: left;
+            z-index: -1;
+            font: 400 16px/40px '微软雅黑';
+            /* display: inline-block; */
+            text-decoration: none;
+            color: white;
+        }
+
+        span {
+            width: 80px;
+            height: 40px;
+            background-color: rgba(107, 103, 103, 0.6);
+            border-bottom: 3px solid rgb(186, 36, 36);
+            float: left;
+            position: absolute;
+            z-index: -1;
+            /* cursor: pointer; */
+        }
+    </style>
+    <script>
+        window.addEventListener('load', function () {
+            var span = document.querySelector('span');
+            var li = document.querySelectorAll('a');
+            var current = 0;
+            var flag = true;
+            for (var i = 0; i < li.length; i++) {
+                li[i].addEventListener('mouseenter', function () {
+                    animate(span, this.offsetLeft)
+                })
+                li[i].addEventListener('mouseleave', function () {
+                    if (flag) {
+                        animate(span, li[0].offsetLeft)
+                    } else {
+                        animate(span, current)
+                    }
+
+                })
+                li[i].addEventListener('click', function () {
+                    current = this.offsetLeft;
+                    flag = false;
+                })
+            }
+        })
+    </script>
+</head>
+
+<body>
+    <div>
+        <span></span>
+        <ul>
+            <li><a href="#">首页</a></li>
+            <li><a href="#">第二页</a></li>
+            <li><a href="#">第三页</a></li>
+            <li><a href="#">第四页</a></li>
+            <li><a href="#">第五页</a></li>
+            <li><a href="#">第六页</a></li>
+        </ul>
+    </div>
+</body>
+
+</html>

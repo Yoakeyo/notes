@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn1">移动盒子到500距离</button>
+    <button class="btn2">移动盒子到800距离</button>
+    <div></div>
+
+    <script>
+        var div = document.querySelector('div');
+        var button1 = document.querySelector('.btn1');
+        var button2 = document.querySelector('.btn2');
+
+        function animate(obj, target, callback) {
+            // 清除以前的定时器，防止多个定时器同时生成
+            clearInterval(obj.timer)
+            obj.timer = setInterval(function () {
+                // 把步长值写入定时器
+                // 步长公式:(目标值 - 现在的位置) / 10
+                var step = (target - obj.offsetLeft) / 10;
+                // Math.ceil 步长值向上取整 Math.floor 向下取整
+                // 往前走向上取整，往后退向下取整
+                step = step > 0 ? Math.ceil(step) : Math.floor(step)
+                if (obj.offsetLeft == target) {
+                    // 停止动画 即为停止定时器
+                    clearInterval(obj.timer);
+                    // 回调函数写在定时器里面
+                    if (callback) {
+                        callback();
+                    }
+                } else {
+                    obj.style.left = obj.offsetLeft + step + 'px';
+                }
+            }, 15)
+        }
+        // 调用函数
+        button1.addEventListener('click', function () {
+            animate(div, 500)
+        })
+        button2.addEventListener('click', function () {
+            animate(div, 800, function () {
+                // 执行体
+                div.style.backgroundColor = 'red';
+            })
+        })
+    </script>
+</body>
+
+</html>

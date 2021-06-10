@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery-3.6.0.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            width: 200px;
+            height: 250px;
+        }
+
+        #left li {
+            width: 50px;
+            height: 20px;
+            background-color: cornflowerblue;
+            list-style: none;
+            text-align: center;
+            border-bottom: 1px solid black;
+            border-right: 1px solid black;
+
+        }
+
+        #right div {
+            display: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .main {
+            display: flex;
+            margin: 100px 100px;
+            border: 1px solid black;
+            width: 251px;
+            height: 250px;
+        }
+    </style>
+    <script>
+        $(function () {
+            $("#right div").eq(0).show();
+            $("#left li").mouseover(function () {
+                var index = $(this).index();
+                // console.log(index);
+                // $("#right div").eq(index).show();
+                // $("#right div").eq(index).siblings().hide();
+                // 链式编程
+                $("#right div").eq(index).show().siblings().hide();
+            })
+        })
+
+    </script>
+</head>
+
+<body>
+    <div class="main">
+        <ul id="left">
+            <li><a href="#">女鞋</a></li>
+            <li><a href="#">雪地靴</a></li>
+            <li><a href="#">冬裙</a></li>
+            <li><a href="#">毛衣</a></li>
+        </ul>
+        <div id="right">
+            <div><a href="#"><img
+                        src="https://img.alicdn.com/imgextra/i1/676197649/O1CN01ptzntu26NI3YX1qtM_!!676197649.jpg"
+                        alt=""></a></div>
+            <div><a href="#"><img
+                        src="https://img.alicdn.com/imgextra/i1/676197649/O1CN01KOnFM626NI3UgvM9X_!!676197649.jpg"
+                        alt=""></a></div>
+            <div><a href="#"><img
+                        src="https://img.alicdn.com/tfs/TB1Cmg1RoY1gK0jSZFCXXcwqXXa-648-648.jpg_400x400q80.jpg"
+                        alt=""></a></div>
+            <div><a href="#"><img
+                        src="https://img.alicdn.com/tfs/TB1dsVUQ8r0gK0jSZFnXXbRRXXa-777-828.jpg_400x400q80.jpg"
+                        alt=""></a></div>
+        </div>
+
+    </div>
+</body>
+
+</html>

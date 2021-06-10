@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        div {
+            height: 80px;
+            width: 600px;
+            background-color: blue;
+            margin: 50px 50px;
+            overflow: hidden;
+
+        }
+
+        ul {
+            margin-top: 3px;
+
+        }
+
+        li {
+            list-style: none;
+            width: 69px;
+            height: 69px;
+            margin-left: 10px;
+            float: left;
+        }
+
+
+
+        .small {
+            width: 69px;
+            height: 69px;
+            position: absolute;
+            border: 2px solid white;
+            border-radius: 5px;
+
+        }
+
+        .big {
+            width: 224px;
+            height: 69px;
+            display: none;
+            margin-top: 3px;
+        }
+
+        .current {
+            width: 224px;
+        }
+
+        .current .big {
+            display: block;
+        }
+
+        .current .small {
+            display: none;
+        }
+    </style>
+    <script src="./jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            $("div li").mouseenter(function () {
+                $(this).stop().animate({
+                    width: 224
+                }).find(".small").stop().fadeOut().siblings(".big").stop().fadeIn();
+                $(this).siblings("li").stop().animate({
+                    width: 69
+                }).find(".small").stop().fadeIn().siblings(".big").stop().fadeOut();
+            })
+
+        })
+    </script>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li class="current">
+                <a href="">
+
+                    <img src="https://game.gtimg.cn/images/yxzj/img201606/heroimg/129/129.jpg" alt="" class="small">
+                    <img src="https://game.gtimg.cn/images/yxzj/img201606/heroimg/129/129-freehover.png" alt=""
+                        class="big">
+                </a>
+            </li>
+            <li>
+                <a href="">
+
+                    <img src="https://game.gtimg.cn/images/yxzj/img201606/heroimg/144/144.jpg" alt="" class="small">
+                    <img src="https://game.gtimg.cn/images/yxzj/img201606/heroimg/144/144-freehover.png" alt=""
+                        class="big">
+                </a>
+            </li>
+            <li>
+                <a href="">
+
+                    <img src="https://game.gtimg.cn/images/yxzj/img201606/heroimg/112/112.jpg" alt="" class="small">
+                    <img src="https://game.gtimg.cn/images/yxzj/img201606/heroimg/112/112-freehover.png" alt=""
+                        class="big">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="https://game.gtimg.cn/images/yxzj/img201606/heroimg/508/508.jpg" alt="" class="small">
+                    <img src="https://game.gtimg.cn/images/yxzj/img201606/heroimg/508/508-freehover.png" alt=""
+                        class="big">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="https://game.gtimg.cn/images/yxzj/img201606/heroimg/133/133.jpg" alt="" class="small">
+                    <img src="https://game.gtimg.cn/images/yxzj/img201606/heroimg/133/133-freehover.png" alt=""
+                        class="big">
+                </a>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

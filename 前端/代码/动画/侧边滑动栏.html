@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./animate.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        span {
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background-color: rgb(138, 100, 174);
+            /* float: right; */
+            /* z-index: -1; */
+            position: absolute;
+        }
+
+        .box {
+            left: 0;
+            top: 0;
+            position: absolute;
+            width: 200px;
+            height: 40px;
+            background-color: blueviolet;
+            /* float: right; */
+            z-index: -1;
+        }
+
+        .big_box {
+            /* float: right; */
+            top: 300px;
+            right: 40px;
+            position: fixed;
+            font: 400 16px/40px '黑体';
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="big_box">
+        <span>←</span>
+        <div class="box">
+            问题反馈
+        </div>
+    </div>
+    <script>
+        var big_box = document.querySelector('.big_box');
+        var box = document.querySelector('.box');
+        big_box.addEventListener('mouseenter', function () {
+            animate(box, -160, function () {
+                // 回调函数 滑动完成后将左箭头改为右箭头
+                big_box.children[0].innerHTML = '→';
+            })
+        })
+        big_box.addEventListener('mouseleave', function () {
+            animate(box, 0, function () {
+                big_box.children[0].innerHTML = '←';
+            })
+        })
+    </script>
+</body>
+
+</html>

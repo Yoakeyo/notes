@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            height: auto;
+            width: 80px;
+        }
+
+        .nav {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav ul {
+            display: none;
+            list-style: none;
+            height: auto;
+            position: absolute;
+            padding: 0;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid orange;
+            border-bottom: 0px;
+        }
+
+        .nav ul li {
+            height: 30px;
+            width: 80px;
+            background-color: rgb(223, 223, 223);
+            border-bottom: 1px solid orange;
+            font: 400 12px/30px '宋体';
+        }
+
+        .nav ul li a:hover {
+            background-color: rgb(140, 140, 140);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul class="nav">
+            <li> <a href="#">
+                    登录
+                </a></li>
+            <li><a href="#">
+                    微博
+                </a>
+                <ul>
+                    <li><a href="#">私信</a></li>
+                    <li><a href="#">评论</a></li>
+                    <li><a href="#">@我</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#">私信</a></li>
+                    <li><a href="#">评论</a></li>
+                    <li><a href="#">@我</a></li>
+                </ul>
+            </li>
+            <li><a href="#">
+                    博客
+                </a>
+                <ul>
+                    <li><a href="#">私信</a></li>
+                    <li><a href="#">评论</a></li>
+                    <li><a href="#">@我</a></li>
+                </ul>
+            </li>
+            <li><a href="#">
+                    邮箱
+                </a>
+                <ul>
+                    <li><a href="#">私信</a></li>
+                    <li><a href="#">评论</a></li>
+                    <li><a href="#">@我</a></li>
+                </ul>
+            </li>
+        </ul>
+
+
+
+
+
+
+
+    </div>
+    <script>
+        // 方法1
+        // var select = document.querySelectorAll('a');
+        // var ul = document.querySelector('.nav ul');
+        // for (var i = 0; i < select.length; i++) {
+        //     ul.onmouseover = function () {
+        //         ul.style.display = 'block'
+        //         select[1].style.backgroundColor = 'rgb(140, 140, 140)';
+        //     }
+        //     select[1].onmouseover = function () {
+        //         select[1].style.backgroundColor = 'rgb(140, 140, 140)';
+        //         ul.style.display = 'block'
+        //     }
+        //     ul.onmouseout = function () {
+        //         select[1].style.backgroundColor = 'rgb(223, 223, 223)';
+        //         ul.style.display = 'none'
+        //     }
+        //     select[1].onmouseout = function () {
+        //         select[1].style.backgroundColor = 'rgb(223, 223, 223)';
+        //         ul.style.display = 'none'
+        //     }
+        // }
+        // 方法2
+        var nav = document.querySelector('.nav');
+        var lis = nav.children;
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].onmouseover = function () {
+                // 让第二个孩子显示
+                this.children[1].style.display = 'block';
+            }
+            lis[i].onmouseout = function () {
+                this.children[1].style.display = 'none';
+            }
+        }
+    </script>
+</body>
+
+</html>

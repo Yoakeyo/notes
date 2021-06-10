@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单元素</title>
+</head>
+<body>
+    <h1>input表单元素</h1>
+    <form method="GET">
+        <!-- text 文本框 用户可以在其中输入任何文字 -->
+        用户名:<input type="text" name="username" placeholder="请输入用户名" />  <br>
+        <!-- password 密码框 输入其中的内容会被隐藏 -->
+        密码:<input type="password" name="pwd" placeholder="请输入密码" />    <br>
+        <!-- radio 单选框 需设置name才能正常进行判定 -->
+        <!-- 单选框和复选框可以设置checked来设置默认被选中 -->
+        性别:男<input type="radio" name="sex" checked="checked" />女<input type="radio" name="sex">    <br>
+        <!-- checkbox 复选框 用于多选或让用户确认信息 -->
+        爱好:HTML<input type="checkbox" name="hobby" >Python<input type="checkbox" name="hobby">c++<input type="checkbox" name="hobby"> <br>
+        <!-- 提交表单数据给服务器 -->
+        <input type="submit" value="确认">
+        <!-- 重置表单 -->
+        <input type="reset" value="重新输入">
+        <!-- button 普通按钮 后期结合JavaScript使用 -->
+        <input type="button" value="获取短信验证码">
+        <!-- file 文件域 上传文件使用 -->
+        <input type="file" value="点击上传" >
+    </form>
+</body>
+</html>

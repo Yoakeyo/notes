@@ -1,0 +1,30 @@
+        div {
+            color: transparent;
+            width: 300px;
+            height: 250px;
+            font: 700 16px/36px '微软雅黑';
+            top: 0px;
+        }
+        
+        div:hover p {
+            color: red;
+            background: rgba(0, 0, 0, 0.6);
+            position: absolute;
+            display: block;
+            text-align: center;
+            margin-top: 60px;
+            width: 300px;
+            height: 250px;
+        }
+
+        div:hover img {
+            margin-top: 60px;
+        }
+
+        img {
+            margin-top: 0px;
+            margin-left: 0px;
+            width: 300px;
+            height: 250px;
+            
+        }

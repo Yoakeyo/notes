@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>边框</title>
+    <style>
+        /* 创建一个长度200 宽度200 上边框为红色，其余边框为蓝色的盒子 */
+        div {
+            width: 198px;
+            height: 198px;
+            border: 1px solid blue;
+            /* 层叠性 */
+            border-top: 1px solid red;
+            margin: 0 auto;
+            text-align: center;
+            display: flex;
+            align-items: center;
+        }
+
+        tr,
+        td {
+            border: 1px solid purple;
+            font-size: 15px;
+            border-collapse: collapse;
+            height: 20px;
+            width: 30px;
+
+        }
+
+        table {
+            /* padding: auto auto; */
+            display: inline-block;
+            border-collapse: collapse;
+            margin-top: auto 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <table cellspacing="0" align="center">
+            <tr>
+                <td>123</td>
+                <td>123</td>
+                <td>123</td>
+            <tr>
+                <td>123</td>
+                <td>123</td>
+                <td>123</td>
+            <tr>
+                <td>123</td>
+                <td>123</td>
+                <td>123</td>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生信息管理系统</title>
+    <script>
+        window.onload = function () {
+            var nav = document.getElementById('nav');
+            var oNav = nav.getElementsByTagName('li');
+
+            var container = document.getElementById('container');
+            var oDiv = container.getElementsByClassName('tab');
+            for (var i = 0; i < oNav.length; i++) {
+                oNav[i].index = i;
+                oNav[i].onclick = function () {
+                    for (var i = 0; i < oNav.length; i++) {
+                        oNav[i].className = '';
+                        oDiv[i].style.display = "none";
+                    }
+                    this.className = 'act';
+                    oDiv[this.index].style.display = "block"
+                }
+                for (var m = 1; m < oNav.length; m++) {
+                    oNav[m].className = '';
+                    oDiv[m].style.display = "none";
+                }
+            }
+        };
+    </script>
+    <style>
+        * {
+            text-align: center;
+        }
+
+        nav li {
+            display: inline;
+            width: 24%;
+            text-decoration: none;
+            padding: 15px;
+        }
+
+        li:hover {
+            background-color: lightblue;
+        }
+
+        section {
+            height: 300px;
+        }
+    </style>
+    </script>
+</head>
+
+<body>
+    <!--导航栏部分HTML代码-->
+    <nav id="nav">
+        <ul>
+            <li class="act">选卡1</li>
+            <li>选卡2</li>
+            <li>选卡3</li>
+            <li>选卡4</li>
+        </ul>
+    </nav>
+    <!--内容部分HTML代码-->
+    <div id="container">
+        <section class="tab" style="background-color: tomato">内容1</section>
+        <section class="tab" style="background-color: cyan">内容2</section>
+        <section class="tab" style="background-color: blueviolet">内容3</section>
+        <section class="tab" style="background-color: gold">内容4</section>
+    </div>
+</body>
+
+</html>

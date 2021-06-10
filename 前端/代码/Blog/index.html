@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欢迎来到我的博客</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .page {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            text-align: center;
+        }
+
+        .main {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .left {
+            align-items: stretch;
+        }
+
+        .left li {
+            list-style: none;
+        }
+
+        .right {
+            flex-grow: 1;
+            text-indent: 2em;
+        }
+
+        .footer {
+            align-items: flex-end;
+        }
+
+        ul {
+            height: 100%;
+        }
+
+        li {
+            height: 40px;
+        }
+
+        ul li a {
+            width: 80px;
+            height: 40px;
+            background-color: royalblue;
+            text-align: center;
+            float: left;
+            z-index: -1;
+            font: 400 16px/40px '微软雅黑';
+            text-decoration: none;
+            color: white;
+            margin-top: 2px;
+        }
+
+        .rigth_line {
+            width: 80px;
+            height: 40px;
+            /* background-color: rgba(107, 103, 103, 0.6); */
+            border-right: 3px solid rgb(186, 36, 36);
+            float: left;
+            position: absolute;
+            z-index: -1;
+            /* cursor: pointer; */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page">
+        <div class="header">
+            <h2>欢迎来到我的博客</h2>
+        </div>
+        <div class="main">
+            <div class="left">
+                <span class="rigth_line"></span>
+                <ul>
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">笔记</a></li>
+                    <li><a href="#">轮子</a></li>
+                    <li><a href="#">第四页</a></li>
+                    <li><a href="#">第五页</a></li>
+                    <li><a href="#">第六页</a></li>
+                </ul>
+            </div>
+            <div class="right">
+                <div>
+                    内容
+                </div>
+                <div class="banner">
+                    <img src="" alt="">
+                </div>
+                <div class="slider-bar">
+                    <span class="goBack">返回顶部</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            页脚
+        </div>
+    </div>
+    <script src="./animate.js"></script>
+    <script>
+        window.addEventListener('load', function () {
+            // 左侧选择栏
+            var span = document.querySelector('.left span');
+            var li = document.querySelectorAll('.left a');
+            var current = 0;
+            var flag = true;
+            for (var i = 0; i < li.length; i++) {
+                li[i].addEventListener('mouseenter', function () {
+                    animate(span, this.offsetTop)
+                })
+                li[i].addEventListener('mouseleave', function () {
+                    if (flag) {
+                        animate(span, li[0].offsetTop)
+                    } else {
+                        animate(span, current)
+                    }
+
+                })
+                li[i].addEventListener('click', function () {
+                    current = this.offsetTop;
+                    flag = false;
+                })
+            }
+            // 返回顶部
+            var goBack = document.querySelector('.goBack');
+            var slider = document.querySelector('.slider-bar');
+            var banner = document.querySelector('.banner');
+            var sliderTop = slider.offsetTop - banner.offsetTop;
+            document.addEventListener('scroll', function () {
+                // 当 滚动了 banner.offsetTop 相同的距离时
+                if (window.pageYOffset >= banner.offsetTop) {
+                    slider.style.position = 'fixed';
+                    slider.style.top = sliderTop + 'px';
+                } else {
+                    slider.style.position = 'absolute';
+                    slider.style.top = banner.offsetTop + 'px';
+                }
+                if (window.pageYOffset >= main.offsetTop) {
+                    goBack.style.display = 'block'
+                } else {
+                    goBack.style.display = 'none'
+                }
+                console.log(window.pageYOffset);
+            })
+            goBack.addEventListener('click', function () {
+                window.scroll(0, 0);
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+.title {
+    /* font-size: 20px;
+    font-weight: 700;
+    font-family: 'Micorsoft Yahei'; */
+    font:700 20px "Micorsoft Yahei";
+}
+.search {
+    width: 170px;
+}
+h2 {
+/* 让标题不加粗并居中对齐 */
+    font-weight: 400;
+    text-align: center;
+}
+p {
+    text-indent: 2em;
+    /* font-family: '宋体';
+    font-size: 16px;
+    line-height: 26px; */
+    font: 16px/26px '宋体';
+    
+}
+a {
+    text-decoration: none;
+}
+.gray {
+    color: gray;
+}
+.picture {
+    /* 让图片居中对齐，则需要让他的父亲p标签居中对齐 */
+    text-align: center;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <input type="text">
+        <button>提交</button>
+    </div>
+    <script>
+        var btn = document.querySelector('button');
+        var input = document.querySelector('input');
+
+        btn.addEventListener('click', function () {
+            var time = 3;
+            btn.disabled = true;
+            var timer = setInterval(function () {
+                if (time == 0) {
+                    btn.disabled = false;
+                    btn.innerHTML = '提交';
+                    // 清除定时器，重新赋值
+                    clearInterval(timer);
+                    time = 3;
+                } else {
+                    btn.innerHTML = '请在' + time + '秒后重试';
+                    time--;
+                }
+
+            }, 1000)
+        })
+    </script>
+</body>
+
+</html>

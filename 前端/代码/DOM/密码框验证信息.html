@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p {
+            font: 400 12px/20px '宋体';
+            text-align: center;
+            margin: auto 5px;
+        }
+
+        div {
+            width: auto;
+            height: 20px;
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="text">
+        <p></p>
+    </div>
+    <script>
+        var input = document.querySelector('input');
+        var p = document.querySelector('p');
+        // 获得焦点时触发
+        input.onfocus = function () {
+            p.innerText = '请输入6-16位的密码'
+        }
+        // 失去焦点时触发
+        input.onblur = function () {
+            if (this.value.length == 0) {
+                p.innerText = ''
+            } else if (this.value.length < 6 || this.value.length > 16) {
+                p.innerText = '您输入的位数不对，请重新输入'
+            } else {
+                p.innerText = '您的输入正确'
+            }
+
+        }
+    </script>
+</body>
+
+</html>

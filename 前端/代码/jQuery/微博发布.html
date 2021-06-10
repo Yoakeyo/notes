@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        div {
+            width: 500px;
+            border: 1px solid black;
+            margin: 50px 50px;
+            text-align: center;
+        }
+
+        textarea {
+            width: 400px;
+            height: 200px;
+            margin-top: 10%;
+            resize: none;
+            outline: none;
+        }
+
+        ul {
+            width: 400px;
+            padding-left: 30px;
+        }
+
+        ul li {
+            display: none;
+            line-height: 25px;
+            border-bottom: 1px dashed white;
+            position: relative;
+            list-style: none;
+            background-color: cadetblue;
+        }
+
+        a {
+            float: right;
+        }
+    </style>
+    <script src="./jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            $("button").on("click", function () {
+                var li = $("<li></li>")
+                li.html($("textarea").val() + "<a href='javascript:;'>删除</a>");
+                $("ul").prepend(li);
+                li.slideDown();
+                $("textarea").val("");
+            })
+            $("ul").on("click", "a", function () {
+                $(this).parent().slideUp(function () {
+                    $(this).remove();
+                })
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div class="box">
+        <span></span>
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <button>发布</button>
+        <ul></ul>
+    </div>
+</body>
+
+</html>

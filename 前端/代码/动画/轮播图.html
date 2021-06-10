@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./animate.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .main {
+            width: 980px;
+            height: 455px;
+            margin-left: 219px;
+            margin-top: 10px;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        ul {
+            width: 3000px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        ul li {
+            float: left;
+            list-style: none;
+        }
+
+        .focus {
+            position: relative;
+            width: 520px;
+            height: 280px;
+            background-color: purple;
+            /* 隐藏溢出的部分 */
+            overflow: hidden;
+        }
+
+        .left,
+        .right {
+            position: absolute;
+            top: 40%;
+            margin-top: 15px;
+            width: 24px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, .3);
+            text-align: center;
+            line-height: 40px;
+            color: #fff;
+            font-family: 'icomoon';
+            font-size: 18px;
+            text-decoration: none;
+            display: none;
+            z-index: 1;
+        }
+
+        .right {
+            right: 0;
+        }
+
+        .circle {
+            position: absolute;
+            bottom: 10px;
+            left: 230px;
+        }
+
+        .circle li {
+            float: left;
+            width: 8px;
+            height: 8px;
+            border: 2px solid rgba(255, 255, 255, .5);
+            margin: 0 3px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .current {
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="focus">
+            <a href="javascript:;" class="left">←</a>
+            <a href="javascript:;" class="right">→</a>
+            <ul>
+                <li><a href="#"><img
+                            src="https://img.alicdn.com/imgextra/i4/6000000000521/O1CN015q7oxh1Fif22BUgwS_!!6000000000521-0-octopus.jpg"
+                            alt=""></a></li>
+                <li><a href="#"><img src="https://aecpm.alicdn.com/simba/img/TB1JNHwKFXXXXafXVXXSutbFXXX.jpg"
+                            alt=""></a>
+                </li>
+                <li><a href="#"><img src="https://aecpm.alicdn.com/simba/img/TB183NQapLM8KJjSZFBSutJHVXa.jpg"
+                            alt=""></a>
+                </li>
+                <li><a href="#"><img
+                            src="https://img.alicdn.com/imgextra/i4/6000000008137/O1CN01ynT21w29ynT4wLszg_!!6000000008137-2-octopus.png"
+                            alt=""></a></li>
+            </ul>
+            <ol class="circle">
+
+            </ol>
+        </div>
+
+    </div>
+    <script src="./轮播图.js"></script>
+    <script>
+        // window.addEventListener('load', function () {
+        //     var left = document.querySelector('.left');
+        //     var right = document.querySelector('.right');
+        //     var focus = document.querySelector('.focus');
+        //     // 鼠标经过focus，显示左右箭头
+        //     focus.addEventListener('mouseenter', function () {
+        //         left.style.display = 'block';
+        //         right.style.display = 'block';
+        //         // 鼠标经过时停止自动轮播
+        //         clearInterval(timer);
+        //         timer = null;   //清除定时器变量
+        //     })
+        //     // 鼠标离开focus,隐藏箭头
+        //     focus.addEventListener('mouseleave', function () {
+        //         left.style.display = 'none';
+        //         right.style.display = 'none';
+        //         // 鼠标离开时再次自动轮播
+        //         timer = setInterval(function () {
+        //             // 调用点击事件
+        //             right.click();
+        //         }, 2000)
+        //     })
+        //     // 动态生成小圆圈
+        //     var ul = focus.querySelector('ul');
+        //     var ol = focus.querySelector('.circle');
+        //     for (var i = 0; i < ul.children.length; i++) {
+        //         var li = document.createElement('li')
+        //         // 记录当前小圆圈的索引号，通过自定义属性来生成
+        //         li.setAttribute('index', i)
+        //         ol.appendChild(li)
+        //         li.addEventListener('click', function () {
+        //             // 清除其他小圆圈的 current
+        //             for (var i = 0; i < ol.children.length; i++) {
+        //                 ol.children[i].className = ''
+        //             }
+        //             // 留下点击的 current
+        //             this.className = 'current'
+        //             // 点击小圆圈，移动图片
+        //             // 移动距离 = 小圆圈索引号 * 图片的宽度 
+        //             // 获取当前 小圆圈的索引号
+        //             var index = this.getAttribute('index');
+        //             // 点击后将索引号给 num
+        //             num = index;
+        //             var focusWidth = -index * focus.offsetWidth
+        //             // console.log(focusWidth);
+        //             animate(ul, focusWidth);
+        //         })
+        //     }
+        //     // 将第一个 ol 里面的 li 设置类名为 current
+        //     ol.children[0].className = 'current'
+        //     // 克隆第一张图片放到最后面
+        //     var first = ul.children[0].cloneNode(true);
+        //     ul.appendChild(first)
+        //     // 点击右侧按钮，图片滚动一张
+        //     var num = 0;
+        //     // flag 节流阀
+        //     var flag = true;
+        //     right.addEventListener('click', function () {
+        //         if (flag) {
+        //             flag = false;
+        //             // 移动到最后一个图片以后，移动回第一个
+        //             if (num == ul.children.length - 1) {
+        //                 ul.style.left = 0;
+        //                 num = 0;
+        //             }
+        //             num++;
+        //             // 小点移动到最后一个后，移动回第一个
+        //             if (num == ul.children.length - 1) {
+        //                 num = 0;
+        //             }
+        //             animate(ul, -num * focus.offsetWidth, function () {
+        //                 // 打开节流阀
+        //                 flag = true;
+        //             })
+        //             circleChange();
+        //         }
+        //     })
+        //     left.addEventListener('click', function () {
+        //         if (flag) {
+        //             flag = false;
+        //             // 移动到最后一个图片以后，移动回第一个
+        //             if (num == 0) {
+        //                 ul.style.left = ul.children.length - 1 * focus.offsetWidth + 'px';
+        //                 num = ul.children.length - 1;
+        //             }
+        //             num--;
+        //             // 小点移动到最后一个后，移动回第一个
+        //             if (num == ul.children.length - 1) {
+        //                 num = ul.children.length - 1;
+        //             }
+        //             animate(ul, -num * focus.offsetWidth, function () {
+        //                 flag = true;
+        //             })
+        //         }
+        //         circleChange();
+
+        //     });
+        //     // 小圆点滚动
+        //     function circleChange() {
+        //         for (var i = 0; i < ol.children.length; i++) {
+        //             ol.children[i].className = '';
+        //         }
+        //         ol.children[num].className = 'current';
+        //     }
+        //     // 自动播放功能
+        //     var timer = setInterval(function () {
+        //         // 调用点击事件
+        //         right.click();
+        //     }, 2000)
+        // })
+    </script>
+</body>
+
+</html>
