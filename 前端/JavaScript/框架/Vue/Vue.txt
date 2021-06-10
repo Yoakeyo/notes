@@ -10,7 +10,7 @@ Vue框架
 	
 Vue 扩展插件
 	vue-cli					脚手架
-	vue-resource、axios		ajax请求
+	vue-resource、axios	               ajax请求
 	vue-router				路由
 	vuex					状态管理
 	mint-ui					基于 vue 的 UI 组件库(移动端)
