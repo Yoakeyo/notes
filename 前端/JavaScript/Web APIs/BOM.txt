@@ -1,0 +1,165 @@
+BOM(Browser Object Model / 浏览器对象模型)
+	是浏览器厂商在各自浏览器上定义的，兼容性较差
+	提供了对立于内容而与浏览器窗口进行交互的对象
+	核心对象是 window
+	把 浏览器 当做一个 对象 来看待
+	主要学习 浏览器窗口交互的一些对象
+	BOM 的顶级对象是 window
+
+BOM的构成
+	BOM 比 DOM 更大，包含 DOM
+	Window
+		document
+		location
+		navigation
+		sereen
+		history
+		
+window 对象
+	浏览器的顶级对象
+		是 JS 访问浏览器窗口的一个接口
+		是一个全局变量
+			定义在全局作用域中的变量、函数都会变成 window 对象的属性和方法
+	在调用时可以省略 window
+		alert()、prompt()等都属于 window 对象方法
+		特殊属性
+			window.name
+	常见事件
+		窗口加载事件
+			window.onload = function() {}
+				当文档内容完全加载会触发该事件(包括图像、脚本文件、CSS文件等)
+				调用的处理函数
+				只能写一次，如果有多个，会以最后一个为基准
+			window.addEventListner("load",function(){});
+				当页面内容全部加载完毕时触发
+				包含页面dom元素、图片、flash、css等
+				可以有多个
+				IE9 以上才支持
+			window.addEventListner("DOMContentLoaded",function(){});
+				DOM 加载完触发
+				不包含图片、flash、css等
+				加载速度比 load快一些
+		调整窗口大小事件
+			window.onresize = function() {}
+			window.addEventListner("resize",function(){});
+			window.innerWidth	//当前屏幕的宽度
+			window.innerHeight	//当前屏幕的宽度
+		定时器
+			window.setTimeout(调用函数,[延迟的毫秒数]);
+				设置一个定时器，该定时器在定时器到期后执行调用函数
+				window 在调用时可以省略
+				调用函数可以直接写函数、也可以写函数名或者采取'函数名()'的形式。	//第三种不被推荐
+				停止 setTimeout
+					window.clearTimeout(timeoutID)
+			window.setInterval(回调函数,[间隔的毫秒数]);
+				重复调用一个函数，每隔这个时间，就去调用一次回调函数
+				停止 setInterval
+					window.clearInterval(IntervalID)
+		location 对象
+			location 是一个属性,因为返回的是一个对象，所以也称为 location 对象
+			用于获取或设置窗体的 URL
+			可以用于解析 URL
+			location 对象的属性
+				对象属性					返回值
+				location.href			获取或设置整个 URL
+				location.host			返回主机(域名)
+				location.port			返回端口号
+				location.pathname		返回路径
+				location.search			返回参数
+				location.hash			返回片段
+			location 对象的方法
+				location.assign()		跟 href 一样，可以跳转页面(也称为重定向页面)
+				location.replace()		替换当前页面，因为不记录历史，所以不能后退页面
+				location.reload()		重新加载页面，相当于 刷新  或者 F5，如果参数为 true 则为强制刷新(ctrl + F5)
+		滚动窗口至文档中的特定位置
+			window.scroll(x,y)
+
+
+client 系列元素
+	元素可视区
+	主要用于获取元素大小
+	clientWidth
+	clientHeight
+	client(客户端)
+		element.clientTop		返回元素上边框的大小
+		element.clientLeft		返回元素左边框的大小
+		element.clientWidth		返回自身包括 padding、内容区的宽度，不含边框，返回数值不带单位
+			与 offsetWidth 最大的区别是 不包含边框
+		element.clientHeight	返回自身包括 padding、内容区的高度，不含边框，返回数值不带单位
+	立即执行函数
+		语法:
+			(function(){})()
+			(function(){}())
+				第二个小括号可以看做是调用函数
+				例:
+					(function(a,b){
+						console.log(a+b);
+					})(1,2)		
+					// 输出 3
+		创建一个独立的作用域
+		里面的所有变量都是局部变量	，不会命名冲突
+		使函数不需要调用，直接执行
+		
+		
+	
+offset 系列元素
+	元素偏移量
+	主要用于获取元素位置
+		offsetLeft
+		offsetTop
+	offset(偏移量)
+		通过 offset 系列属性可以动态的得到该元素的位置(偏移)、大小等
+		获得元素距离带有定位父元素的位置
+		获得元素资深的大小(宽度、高度)
+		返回的数值都不带单位
+
+	常用属性
+		element.offsetParent	返回作为钙元素带有定位的父级元素
+		element.offsetTop		返回元素相对于带定位父元素上方的偏移
+		element.offsetLeft		返回元素相对于带有定位父元素左边框的偏移
+		element.offsetWidth		返回自身包括 padding、边框、内容区的宽度
+		element.offsetHeight	返回自身包括 padding、边框、内容区的高度
+
+	与 style 的区别
+		offset
+			offset 可以得到任意样式表中的样式值
+			offset 系列获得的数值是没有单位的
+			offsetWidth 包含 padding + border + width
+			offsetWidth 等属性是只读属性，只能获取不能赋值
+			更适合用于获得元素大小的位置
+		style
+			style 只能得到行内样式表中的样式值
+			style.width 获得的是带有单位的字符串
+			style.width 获得不包括 padding 和 border 的值
+			style.width 是可读写属性，可以获取也可以赋值
+			更适合给元素更改值
+
+	获得鼠标距离盒子左右的距离
+		1.获得鼠标在页面中的坐标
+			(e.pageX,e.pageY)
+		2.得到盒子在页面中的距离
+			(box.offsetLeft,box.offsetTop)
+		3.用鼠标距离页面的坐标减去盒子在页面中的距离，得到鼠标在盒子内的坐标
+
+
+scroll 系列元素
+	滚动事件
+	主要用于获取滚动距离
+		scrollLeft
+		scrollTop
+		// 注意 页面的滚动距离是通过 window.pageXOffset 获得
+	当滚动条发生变动时触发
+	element.scrollTop		被卷去的上侧距离，返回值不带单位
+	element.scrollLeft		被卷去的左侧距离
+	element.scrollWidth		返回自身实际内容的宽度，不含边框
+	element.scrollHeight	返回自身实际高度
+
+mouseenter 和 mouseover
+	mouseenter/mouseleave 鼠标事件
+		当鼠标移动到元素上/离开时就会触发
+		经过自身盒子触发
+		不会冒泡
+	mouseover 鼠标事件
+		经过自身盒子 和 自身子盒子都会触发
+		会冒泡
+

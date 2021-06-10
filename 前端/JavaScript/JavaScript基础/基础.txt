@@ -1,0 +1,65 @@
+JavaScript是什么
+	是运行在客户端的脚本语言(Script)
+	脚本语言:不需要编译，运行过程中由js解释器(js引擎)逐行来进行解释并执行
+	也可以基于Node.js技术对服务器端编程
+	第一个js程序
+		alert("Hello World")
+	也称为ECMAScript5，简称es5
+		
+作用
+	表单动态校验(密码强度检测)(JS产生的最初目的)
+	网页特效
+	服务器端开发(Node.js)
+	桌面程序(Electron)
+	App(Cordova)
+	控制硬件-物联网(Ruff)
+	游戏开发(cocos2d-js)
+	
+	
+浏览器分为两部分
+	渲染引擎:用于解析HTML和CSS，俗称内核，比如chrome浏览器的blink
+	JS引擎:也称js解释器。用于读取网页中的JavaScript代码，对其进行处理后运行，比如chrome浏览器的V8
+		浏览器本身并不会执行js代码，而是通过内置的JavaScript引擎来执行js代码
+		因为是逐行解释每一句源码，所以JavaScript归为脚本语言
+	
+	
+JavaScript的组成
+	ECMAScript
+		JavaScript语法
+		规定了js的编程语法和基础核心，是所有浏览器厂商共同遵守的一套js语法工业标准
+	DOM(Document Objcet Model)
+		页面文档对象模型
+		处理可扩展标记语言的标准编程接口
+		通过DOM提供的接口可以对页面上的各种元素进行操作(大小、位置、颜色等)
+	BOM(Browser Objcet Model)
+		浏览器对象模型
+		通过BOM可以对浏览器进行操作，比如弹出框、控制浏览器跳转、获取分辨率等
+
+
+三种书写方式
+	1.行内式
+		<input type="button" value="点我试试" onclick="alert('Hello World')" />
+			HTML用双引号，js中用单引号
+			特殊情况下少量使用
+			
+	2、内嵌式
+		<script>
+			alert('Hello World')
+		</script>
+		
+	3.外部式
+		<script src="my.js"></script>
+		标签中不可以写代码
+		适用于代码量较大的情况
+		
+		
+注释
+	单行注释		//注释内容
+	多行注释		/*注释内容*/
+
+变量、属性、函数、方法之间的区别
+	变量:单独声明赋值，单独存在
+	属性:对象里面的变量称为属性，不需要声明，用来描述该对象的特征
+	函数:单独存在，通过 函数名() 的方式就可以调用
+	方法:对象里面的函数称为方法，方法不需要声明，使用 方法.方法名() 即可调用，迎来描述该对象的行为和功能
+	

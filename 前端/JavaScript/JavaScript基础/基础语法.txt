@@ -1,0 +1,63 @@
+输入输出语句
+alert(msg)			浏览器弹出警示框
+console.log(msg)	浏览器控制台打印输出信息
+prompt(info)		浏览器弹出输入框，用户可以输入
+console.dir()		打印返回的元素对象，查看里面的元素和方法
+
+常用:
+	换行符
+		\n
+	获取字符串长度
+		a.length
+	获取数据类型
+		typeof 	a
+
+
+变量	
+	声明变量
+		var a; 			//声明一个名称为a的变量
+	定义变量/常量
+		let(变量)
+		const(常量)
+	赋值
+		a = 10;			//给变量a赋值为10
+	输出结果
+		console.log(a)	//在控制台中输出结果
+	声明变量并赋值的过程，称作变量的初始化
+	
+	数据类型
+		JavaScript拥有动态类型，变量的数据类型根据右边的变量值动态变换
+		数据类型是可以变化的
+		简单数据类型:
+			Number			数字型				0
+				特殊情况:
+					声明变量时以0为开头为八进制
+					声明变量时以0x为开头为十六进制
+					infinity		无穷大
+					-infinity		无穷小
+					NaN				非数值
+					isNaN()			用于判断非数字	如果是数字返回false
+			String			布尔值类型			false
+			Boolean			字符串类型			""
+			Undefined		声明了变量没给值		undefined
+			Null			空值					null
+		复杂数据类型:
+			object
+				
+		数据类型转换
+			需要注意大小写
+			转换为字符串	
+				toString()		转成字符串						var num = 1;alert(num.toString());
+				String()		强制转换成字符串					var num = 1;alert(String(num));
+				加号拼接字符串	和字符串拼接的结果都是字符串		var num = 1;alert(num+'');
+			转换为数字型
+				parseInt(string)	将string转换为整数数值型		parseInt('87')
+				parseFloat(string)	将string转换为浮点数数值型	parseFloat('87.12')
+				Number()			将string强制转换为数值型		Number('12')
+				js隐式转换(- * /)	利用算术运算符隐式转换为数值型	'12' - 0
+					如果变量内为'120px'会去掉这个px，变成'120'
+					如果变量内为'num120px'会变成'NaN'
+			转换为布尔型
+				Boolean()			将其他类型转换为布尔值		Boolean('')
+					代表空、否定的值会被转换为 false ，如''、0、NaN、null、undefined
+					其余值会被转换为true

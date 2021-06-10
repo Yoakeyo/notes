@@ -1,0 +1,55 @@
+函数:
+	函数是做某件事或者实现某种功能 
+	函数可以相互调用
+	命名函数
+	语法:
+		创建函数:
+			利用函数关键词自定义函数(命名函数):
+				function 函数名(形参1，形参2...) {
+					//函数体
+					return 返回值
+				}
+			函数表达式(匿名函数):
+				语法:
+					var 变量名 = function(){
+							//函数体
+							return 返回值
+						};
+		调用函数:
+			函数名(实参1，实参2)
+	return(返回值):
+		只要函数遇到return，就把结果返回给调用者
+		函数名() = return后面的结果
+		return之后的代码不执行
+		返回的结果是最后一个值
+	arguments
+		只有函数才有 arguments 对象
+		每个函数都已经内置好了
+		存储了所有传递的实参
+		展现形式是一个伪数组
+			并不是真正意义上的数组
+			具有数组的 length 属性
+			按照索引的方式进行存储
+			没有真正数组的一些方法 pop()、push()等
+	
+	匿名函数
+		没有实际名称的函数
+		例如:
+			{function(){
+				console.log("hello world")
+			}}()
+				// 控制台输出: hello world
+			btn.onclick = function(){
+				alert("hello world")
+			}
+				// 弹窗输出: hello world
+			var hello = function(){
+				return "hello world"
+			}
+			console.log(hello());
+				// 控制台输出: hello world
+	回调函数(callback)
+		需要等待后才会执行的函数
+		如:setTimeout()、element.onclick = function(){}、element.addEventListener("click",fn)
+	
+	
