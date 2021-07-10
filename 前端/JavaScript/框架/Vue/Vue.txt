@@ -10,7 +10,7 @@ Vue框架
 	
 Vue 扩展插件
 	vue-cli					脚手架
-	vue-resource、axios	                ajax请求
+	vue-resource、axios		ajax请求
 	vue-router				路由
 	vuex					状态管理
 	mint-ui					基于 vue 的 UI 组件库(移动端)
@@ -38,7 +38,22 @@ option 选项
 			定义一些属于 Vue 的方法	// 面对对象的是方法
 				可以在其他地方调用
 				也可以在指令中使用
-
+  computed
+    计算属性
+      内部有缓存,相同的只运行一次
+      使用上与 methods 的区别
+        不需要加()，可以直接当成属性使用
+      一般是没有 set 方法的，只读属性
+    getter
+      get 方法
+      读取属性
+    setter
+      set 方法
+      有参数
+      如果要修改计算属性的话，需要使用 set 方法
+  filters
+    过滤器
+    
 模板语法
 	插值语法(双花括号表达式 / Mustache(胡子语法))
 		用于解析标签体内容
@@ -48,16 +63,25 @@ option 选项
         不仅可以直接写变量，也可以写简单的表达式
 	指令语法(以 v- 开头的标签属性)
 		用于解析标签(标签属性、标签体内容、绑定事件的回调等)
-			v-text
-		设置标签的文本值
-		默认写法会替换全部内容
-		使用插值语法可以替换指定内容
+		v-text
+      设置标签的文本值
+      默认写法会替换全部内容
+      使用插值语法可以替换指定内容
+      通常情况下，接受一个 string 类型
+    v-once
+      不需要跟任何表达式
+      表示元素和组件只渲染一次，不会随着数据改变而改变
+    v-pre
+      跳过这个元素和其子元素的编译过程，用于显示原本的内容
+    v-cloak(斗篷)
+      当vue解析之后，会将该属性删除
+      配合css使用
 		v-html
 			设置标签的 innerHTML
 			内容中的 HTML标签会被解析
 		v-on
 			为元素绑定事件,传递自定义参数,事件修饰符
-			也就是监听某个元素的事件
+			也就是绑定事件监听器
 			绑定的方法定义在 method 属性中
 			语法
 				v-on:事件名="函数名"
@@ -67,27 +91,42 @@ option 选项
 						// 逻辑体
 					}
 				}
+      修饰符
+        .stop               调用 event.stopPropagation()，可用于阻止冒泡
+        .prevent            调用 event.preventDefault()，可用于阻止默认事件
+        .{keyCode|keyAlias} 只当事件是从特定键触发时才会触发回调
+        .native             监听组件根元素的原生事件
+        .once               只触发一次回调
 		v-show
 			根据表达式的真假,切换元素的显示和隐藏
 			原理是修改元素的 display
 			指令后的内容最终会被解析为布尔值
 			切换消耗较少
-		v-if
-			根据表达式的真假,切换元素的显示和隐藏
-			原理是操纵 DOM 元素
-			切换消耗资源较多
 		v-bind
 			设置元素的属性	// 例如 src、title、class
 			为元素绑定属性
 			语法:
 				v-bind:属性名=表达式
 					简写: :(冒号)属性名=表达式
+      绑定 Class:
+        对象语法
+          即为 class 后面跟的是一个对象
+            通过{}绑定一个类
+            通过判断传入多个值   // class="{'active':isActive,'title':isTitle}
+            可以和普通的类同时存在，不冲突
+            可以放在一个 methods 或者 computed 中
+        数组语法
+          class="['active','title']"
+      绑定 style
+        :style="{key(CSS属性名):value(属性值)}"
 		v-for
 			根据数据生成列表结构
 			语法:
 				v-for="(item,index) in 数据"
 			数组经常跟 v-for 结合使用
 			数组长度更新会同步到页面上，是响应式的
+      遍历对象
+        v-for=(value,key,index)
 		v-model
 			获取和设置表单元素的值(双向数据绑定)
 				更改两边的任何一边都会更改双方的值
@@ -95,7 +134,19 @@ option 选项
 				v-model:value=""
 			简写:
 				v-model=""	// 因为默认收集 value 值
-
+    条件判断
+      类似于 JavaScript 中的 if/else if/else
+      v-if
+			根据表达式的真假,决定是否渲染
+			原理是操纵 DOM 元素
+			切换消耗资源较多
+      v-else-if
+      v-else
+  组件
+    key属性
+      key 作为标识
+      Vue 在进行 DOM 渲染的时候，出于性能考虑会尽量复用已经存在的元素，而不是重新创建新的元素
+      而保证 key 的不同，可以避免复用的情况
 数据绑定
 	单向数据绑定
 		数据只能从 data 流入页面
@@ -115,7 +166,6 @@ MVVM 模型
 		是 View 和 Model 沟通的桥梁
 		DOM Listeners(DOM 监听)，当 DOM 发生一些事件(例如滚动、点击)时，改变对应的 Data
 		实现了 Data Bindings(数据绑定)，将 Model 的改变实时的反应到 View 中
-
 Vue 的生命周期
 	也叫(hook)钩子函数
 	简单理解:实例从创建到销毁的过程,销毁过程中可以做一些事情
