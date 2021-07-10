@@ -66,6 +66,10 @@
             margin-left: 10px;
 
         }
+
+        [v-cloak] {
+            display: none;
+        }
     </style>
 </head>
 
@@ -77,10 +81,10 @@
 
         </div>
         <div class="search">
-            <input type="text" v-model="city" name="" id="" @keyup.enter="search">
+            <input type="text" v-model="city" @keyup.enter="search">
             <button @click="search">搜索</button>
         </div>
-        <div class="weather">
+        <div class="weather" v-cloak>
             <span v-for="item in weather">
                 <h2>{{ item.type }}</h2>
                 <h4>{{ item.high }} {{ item.low }}</h4>

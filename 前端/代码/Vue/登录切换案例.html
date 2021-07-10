@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./Vue/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <span v-if="type">
+      <label>用户账号</label>
+      <input type="text" placeholder="请输入用户名" key='username'>
+    </span>
+    <span v-else>
+      <label>
+        邮箱地址
+      </label>
+      <input type="text" placeholder="请输入邮箱" key='email'>
+    </span>
+    <button @click="type = !type">切换类型</button>
+  </div>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        type: true
+      },
+      methods: {
+        change() {
+          this.type = !this.type;
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

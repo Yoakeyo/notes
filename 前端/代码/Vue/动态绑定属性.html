@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+  <style>
+    li {
+      list-style: none;
+    }
+
+    .color {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <ul>
+      <li :class="{color:currentIndex === index}" @click="colorClick(index)" v-for="(i,index) in cartoons">
+        {{index}}&nbsp;&nbsp;{{i}}
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    const app = new Vue({
+      el: ".app",
+      data: {
+        cartoons: ['进击的巨人', '电锯人', '炎拳', '车万'],
+        currentIndex: 0
+      },
+      methods: {
+        colorClick: function (index) {
+          this.currentIndex = index;
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
