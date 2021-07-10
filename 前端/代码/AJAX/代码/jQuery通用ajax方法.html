@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button>ajax通用方法</button>
+  <script src="../../jQuery/jquery-3.6.0.min.js"></script>
+  <script>
+    $('button').click(function () {
+      $.ajax({
+        // url
+        url: 'http://127.0.0.1:8000/jQuery-server',
+        // 参数
+        data: { a: 100, b: 200 },
+        // 请求类型
+        type: 'GET',
+        // 响应体类型
+        dataType: 'json',
+        // 成功的回调
+        success: function (data) {
+          console.log(data);
+        },
+        // 超时回调
+        timeout: 2000,
+        // 失败的回调
+        error: function () {
+          console.log('出错了');
+        },
+        // 头信息
+        headers: {
+          c: 300,
+          b: 200
+        }
+      })
+    })
+  </script>
+</body>
+
+</html>

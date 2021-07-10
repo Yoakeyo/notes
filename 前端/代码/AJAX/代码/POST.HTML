@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POST 请求</title>
+  <style>
+    #result {
+      width: 200px;
+      height: 200px;
+      border: solid 1px black;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="result">
+
+  </div>
+  <script>
+    const result = document.getElementById('result');
+    result.addEventListener('mouseover', function () {
+      // 创建对象
+      const xhr = new XMLHttpRequest();
+      // 设置响应体数据类型
+      xhr.responseType = 'json';
+      // 初始化 设置类型与 URL
+      xhr.open('POST', 'http://127.0.0.1:8000/server');
+      // 设置请求头 ('请求体内容的类型',‘参数查询字符串类型’)
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+      xhr.send('a=100&b=200&c=300')
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status >= 200 & xhr.status < 300) {
+            // result.innerHTML = xhr.response;
+            // 手动对数据进行转换
+            // let data = JSON.parse(xhr.response);
+            // console.log(data);
+            // result.innerHTML = data.name;
+            // 自动转换 在前面设置好响应体数据类型
+            console.log(xhr.response);
+            result.innerHTML = xhr.response.name;
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

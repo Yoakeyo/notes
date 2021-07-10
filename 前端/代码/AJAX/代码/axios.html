@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>axios 发送 ajax 请求</title>
+
+</head>
+
+<body>
+  <button>GET</button>
+  <button>POST</button>
+  <button>AJAX</button>
+  <!-- crossorigin="anonymous" 前端向后端发送跨域资源请求 -->
+  <script crossorigin="anonymous" src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.js"></script>
+  <script>
+    const btns = document.querySelectorAll('button');
+    axios.defaults.baseURL = 'http://127.0.0.1:8000';
+    btns[0].onclick = function () {
+      // get 请求
+      axios.get('/axios-server', {
+        // URL 参数
+        params: {
+          id: 100,
+          vip: 7
+        },
+        // 请求头信息
+        headers: {
+          name: 'name',
+          age: 20
+        }
+      }).then(value => {
+        console.log(value);
+      })
+    }
+    btns[1].onclick = function () {
+      // post 请求
+      axios.post('/axios-server', {
+        // 请求体
+        username: 'admin',
+        password: '123456'
+      }, {
+
+        // 其他配置
+
+        // URL 参数
+        params: {
+          id: 100,
+          vip: 7
+        },
+        // 请求头信息
+        Haders: {
+          height: 160,
+          weight: 100
+        }
+      })
+
+
+    }
+    btns[2].onclick = function () {
+      axios({
+        // url
+        url: '/axios-server',
+        // 请求方法
+        method: 'POST',
+        // url参数
+        params: {
+          aaa: 22,
+          ddd: 33
+        },
+        // 头信息
+        headers: {
+          a: 100,
+          n: 200
+        },
+        // 请求体参数
+        data: {
+          username: 'admin',
+          password: '12345'
+        }
+      }).then(response => {
+        console.log(response);
+      })
+    }
+  </script>
+</body>
+
+</html>
