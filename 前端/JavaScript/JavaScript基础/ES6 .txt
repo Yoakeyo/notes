@@ -1,0 +1,34 @@
+ES6之前
+  if 和 for 都没有块级作用域,必须借助 function 来解决问题，也就是闭包
+  
+声明变量
+  let / var
+    可以将 let 看成更完美的 var
+    let 有块级作用域,而 var 没有
+    
+  const
+    将某个变量修饰为常量
+    不可以再次赋值
+    定义时必须赋值
+    指向的对象不能修改，但是可以修改对象内部的属性
+
+对象(字面量)增强写法
+  属性的增强写法
+    let name = 'tom';
+    const obj = {
+      name: name,
+    }
+    const obj = {
+      name,
+    }
+  函数的增强写法
+    const obj = {
+      run:function() {
+        
+      }
+    }
+    const obj = {
+      run() {
+        
+      }
+    }
