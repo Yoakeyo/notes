@@ -1,0 +1,12 @@
+AJAX(Asynchronous JavaScript And XML / 异步的 JavaScript 和 XML)
+  通过 AJAX 可以在浏览器中向服务器发起异步请求
+  无刷新获取数据
+  允许通过用户事件更新网页部分内容
+  没有浏览历史，不能回退
+  存在跨域问题
+  SEO(搜索引擎优化) 不友好
+  
+XML(可扩展标记语言)
+  用来传输和存储数据
+  类似于HTML,但没有预定义标签
+  
